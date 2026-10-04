@@ -41,8 +41,8 @@ export default function LiveOrdersPill() {
             .lo-pill-wrap {
               position: fixed;
               left: 0;
-              top: 50%;
-              transform: translateY(-50%);
+              /* cart popup lives at bottom: 20px with ~60px height — gives ~20px of air */
+              bottom: 108px;
               z-index: 65;
               pointer-events: none;
             }
