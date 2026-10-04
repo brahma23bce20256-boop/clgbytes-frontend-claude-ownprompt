@@ -158,33 +158,35 @@ export default function CartPage() {
         .cl-name { font-weight: 600; font-size: 0.95rem; }
         .cl-price { font-size: 0.8rem; margin-top: 3px; }
 
-        /* Quantity stepper */
+        /* Quantity stepper — transparent, dark icons */
         .cl-qty {
           display: inline-flex; align-items: center;
-          background: var(--brand-orange); color: #fff;
+          background: transparent;
+          color: var(--ink);
+          border: 1px solid var(--line-strong);
           border-radius: 10px;
           overflow: hidden;
-          box-shadow: 0 6px 14px -6px rgba(242,106,31,0.45);
           user-select: none;
         }
         .cl-qty button {
           display: inline-flex; align-items: center; justify-content: center;
           width: 34px; height: 34px;
           padding: 0;
-          color: #fff;
+          color: var(--ink);
           background: transparent;
           transition: background .15s;
         }
         .cl-qty button:hover,
-        .cl-qty button:active { background: rgba(0,0,0,0.18); }
-        .cl-qty button:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
+        .cl-qty button:active { background: var(--cream); }
+        .cl-qty button:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: -3px; }
         .cl-qty span {
-          padding: 0 4px;
+          padding: 0 6px;
           font-weight: 700;
           min-width: 24px;
           text-align: center;
           font-size: 0.95rem;
           line-height: 1;
+          color: var(--ink);
         }
 
         .cl-total { font-weight: 700; font-size: 0.95rem; min-width: 60px; text-align: right; }

@@ -221,14 +221,16 @@ export default function LandingPage() {
           white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .hs-cta {
-          background: var(--brand-orange); color: #fff;
-          font-weight: 600;
-          padding: 12px 22px; border-radius: 999px;
-          font-size: 0.95rem;
+          background: transparent;
+          color: var(--ink);
+          font-weight: 700;
+          padding: 12px 18px;
+          font-size: 0.9rem;
           flex-shrink: 0;
-          transition: background .2s, transform .2s;
+          letter-spacing: 0.02em;
+          transition: color .2s;
         }
-        .hero-search:hover .hs-cta { background: var(--brand-orange-deep); }
+        .hero-search:hover .hs-cta { color: var(--brand-orange-deep); }
 
         .hero-trust {
           display: flex; gap: 20px; flex-wrap: wrap;

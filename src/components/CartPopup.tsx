@@ -98,14 +98,16 @@ export default function CartPopup() {
             .cp-right {
               display: inline-flex; align-items: center; gap: 6px;
               font-size: 0.88rem; font-weight: 700;
-              background: var(--brand-orange); color: #fff;
-              padding: 10px 16px; border-radius: 999px;
+              background: transparent;
+              color: var(--ink);
+              padding: 10px 14px;
               flex-shrink: 0;
-              transition: background .18s;
+              letter-spacing: 0.01em;
+              transition: color .18s;
             }
-            .cp-inner:hover .cp-right { background: var(--brand-orange-deep); }
+            .cp-inner:hover .cp-right { color: var(--brand-orange-deep); }
             @media (max-width: 420px) {
-              .cp-right { padding: 9px 13px; font-size: 0.82rem; }
+              .cp-right { padding: 9px 10px; font-size: 0.82rem; }
               .cp-top { max-width: 40vw; }
             }
           `}</style>

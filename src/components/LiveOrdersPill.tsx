@@ -47,7 +47,7 @@ export default function LiveOrdersPill() {
             .lo-inner {
               display: inline-flex; align-items: center; justify-content: center;
               background: var(--paper);
-              padding: 8px 14px 8px 10px;
+              padding: 10px 14px 10px 12px;
               /* flush-left: no left radius so it looks attached to the border */
               border-radius: 0 999px 999px 0;
               border: 1px solid var(--line-strong);
@@ -60,15 +60,13 @@ export default function LiveOrdersPill() {
             .lo-inner:hover { transform: translateX(2px); }
             .lo-icon {
               position: relative;
-              width: 36px; height: 36px; border-radius: 999px;
-              background: var(--brand-orange); color: #fff;
               display: inline-flex; align-items: center; justify-content: center;
+              color: var(--ink);
               flex-shrink: 0;
-              box-shadow: 0 6px 16px -6px rgba(242,106,31,0.55);
             }
             .lo-dot {
-              position: absolute; top: -2px; right: -2px;
-              width: 10px; height: 10px; border-radius: 999px;
+              position: absolute; top: -4px; right: -5px;
+              width: 9px; height: 9px; border-radius: 999px;
               background: #22C55E;
               border: 2px solid var(--paper);
               animation: lo-pulse 1.4s ease-in-out infinite;

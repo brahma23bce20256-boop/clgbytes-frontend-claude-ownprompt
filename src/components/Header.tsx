@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { ShoppingBag, User as UserIcon, Receipt } from 'lucide-react'
+import { ShoppingBag, User as UserIcon, Package2 } from 'lucide-react'
 import Logo from './Logo'
 import AddressSelector from './AddressSelector'
 import { useStore } from '../store/useStore'
@@ -26,7 +26,7 @@ export default function Header() {
 
         <nav className="header-right">
           <NavLink to="/orders" className="hd-link" aria-label="Orders">
-            <Receipt size={18} />
+            <Package2 size={18} />
             <span>Orders</span>
           </NavLink>
           <Link to="/cart" className="hd-cart" aria-label="Cart">
