@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Star, MapPin, Clock, Plus, Minus, Flame, Search } from 'lucide-react'
+import { ArrowLeft, Star, MapPin, Clock, Plus, Minus, Search } from 'lucide-react'
 import { hotelById } from '../data/hotels'
 import { useStore } from '../store/useStore'
 import VegToggle from '../components/VegToggle'
@@ -37,7 +37,6 @@ export default function MenuPage() {
   }
 
   const distance = hotel.distance[uni]
-  const minutes = Math.max(20, Math.round(distance * 10 + 15))
 
   const grouped = filtered.reduce<Record<string, typeof hotel.menu>>((acc, m) => {
     (acc[m.category] = acc[m.category] || []).push(m)
@@ -77,26 +76,13 @@ export default function MenuPage() {
           </div>
 
           <div className="menu-info-row">
-            <div className="mi-card">
-              <Clock size={16} />
-              <div>
-                <div className="mi-top">Delivery window</div>
-                <div className="mi-sub"><strong>Order by 6 pm</strong> · delivered by <strong>8 pm</strong></div>
-              </div>
+            <div className="mi-line">
+              <Clock size={14} />
+              <span><strong>Order by 6 pm</strong> · delivered by <strong>8 pm</strong></span>
             </div>
-            <div className="mi-card">
-              <Flame size={16} />
-              <div>
-                <div className="mi-top">Prep time</div>
-                <div className="mi-sub">{minutes}–{minutes + 10} min from the kitchen</div>
-              </div>
-            </div>
-            <div className="mi-card">
-              <MapPin size={16} />
-              <div>
-                <div className="mi-top">Pickup point</div>
-                <div className="mi-sub">We hand over at your <strong>main gate</strong>, {uniLabel(uni)}</div>
-              </div>
+            <div className="mi-line">
+              <MapPin size={14} />
+              <span>Hand-over at your <strong>main gate</strong>, {uniLabel(uni)}</span>
             </div>
           </div>
         </div>
@@ -208,17 +194,19 @@ export default function MenuPage() {
         }
         .mr-sub { font-size: 0.72rem; color: var(--ink-mute); margin-top: 6px; }
 
-        .menu-info-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; padding-top: 22px; border-top: 1px dashed var(--line); }
-        .mi-card {
-          display: flex; align-items: flex-start; gap: 10px;
-          background: var(--cream);
-          border-radius: var(--radius-sm);
-          padding: 14px;
+        .menu-info-row {
+          display: flex; flex-direction: column; gap: 6px;
+          margin-top: 14px; padding-top: 14px;
+          border-top: 1px dashed var(--line);
         }
-        .mi-card > svg { color: var(--brand-orange); flex-shrink: 0; margin-top: 2px; }
-        .mi-top { font-size: 0.72rem; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-        .mi-sub { font-size: 0.85rem; margin-top: 3px; line-height: 1.4; }
-        .mi-sub strong { color: var(--ink); font-weight: 600; }
+        .mi-line {
+          display: inline-flex; align-items: center; gap: 8px;
+          font-size: 0.86rem;
+          color: var(--ink-soft);
+          line-height: 1.4;
+        }
+        .mi-line > svg { color: var(--brand-orange); flex-shrink: 0; }
+        .mi-line strong { color: var(--ink); font-weight: 600; }
 
         .menu-body { margin-top: 30px; }
         .menu-controls {
@@ -291,7 +279,8 @@ export default function MenuPage() {
         .hotel-desc-foot { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
 
         @media (max-width: 760px) {
-          .menu-info-row { grid-template-columns: 1fr; }
+          .menu-head { padding: 20px 20px; }
+          .mi-line { font-size: 0.82rem; }
         }
       `}</style>
     </main>
