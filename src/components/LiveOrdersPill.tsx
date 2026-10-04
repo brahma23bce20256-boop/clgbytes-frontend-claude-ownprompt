@@ -25,12 +25,15 @@ export default function LiveOrdersPill() {
           exit={{ x: -80, opacity: 0 }}
           transition={{ type: 'spring', stiffness: 320, damping: 28 }}
         >
-          <Link to="/orders" className="lo-inner" aria-label={`View ${live.length} active order${live.length > 1 ? 's' : ''}`}>
+          <Link
+            to="/orders"
+            className="lo-inner"
+            aria-label={`View ${live.length} active order${live.length > 1 ? 's' : ''}`}
+          >
             <span className="lo-icon">
               <Bike size={16} />
               <span className="lo-dot" />
             </span>
-            <span className="lo-text">View orders</span>
           </Link>
 
           <style>{`
@@ -42,41 +45,37 @@ export default function LiveOrdersPill() {
               z-index: 65;
             }
             .lo-inner {
-              display: inline-flex; align-items: center; gap: 10px;
-              background: var(--ink); color: #fff;
-              padding: 10px 18px 10px 14px;
+              display: inline-flex; align-items: center; justify-content: center;
+              background: var(--paper);
+              padding: 8px 14px 8px 10px;
               /* flush-left: no left radius so it looks attached to the border */
               border-radius: 0 999px 999px 0;
+              border: 1px solid var(--line-strong);
+              border-left: 0;
               box-shadow:
-                0 18px 40px -12px rgba(20,18,18,0.45),
-                0 6px 16px -4px rgba(242,106,31,0.3);
-              font-weight: 600;
-              font-size: 0.88rem;
-              transition: transform .18s, background .18s;
+                0 18px 40px -12px rgba(20,18,18,0.25),
+                0 6px 16px -4px rgba(242,106,31,0.22);
+              transition: transform .18s;
             }
-            .lo-inner:hover { background: #000; transform: translateX(2px); }
+            .lo-inner:hover { transform: translateX(2px); }
             .lo-icon {
               position: relative;
-              width: 28px; height: 28px; border-radius: 999px;
+              width: 36px; height: 36px; border-radius: 999px;
               background: var(--brand-orange); color: #fff;
               display: inline-flex; align-items: center; justify-content: center;
               flex-shrink: 0;
+              box-shadow: 0 6px 16px -6px rgba(242,106,31,0.55);
             }
             .lo-dot {
               position: absolute; top: -2px; right: -2px;
               width: 10px; height: 10px; border-radius: 999px;
               background: #22C55E;
-              border: 2px solid var(--ink);
+              border: 2px solid var(--paper);
               animation: lo-pulse 1.4s ease-in-out infinite;
             }
             @keyframes lo-pulse {
               0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
               50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
-            }
-            .lo-text { white-space: nowrap; }
-
-            @media (max-width: 420px) {
-              .lo-inner { padding: 9px 16px 9px 12px; font-size: 0.82rem; }
             }
           `}</style>
         </motion.div>
