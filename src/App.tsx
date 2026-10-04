@@ -3,6 +3,7 @@ import Header from './components/Header'
 import CartPopup from './components/CartPopup'
 import ScrollToTop from './components/ScrollToTop'
 import LandingPage from './pages/LandingPage'
+import SearchPage from './pages/SearchPage'
 import MenuPage from './pages/MenuPage'
 import CartPage from './pages/CartPage'
 import LoginPage from './pages/LoginPage'
@@ -19,6 +20,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/menu/:hotelId" element={<MenuPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/login" element={<LoginPage />} />

@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Search, Sparkles, Zap, Shield, ArrowRight, PartyPopper } from 'lucide-react'
 import AddressSelector from '../components/AddressSelector'
 import BannerCarousel from '../components/BannerCarousel'
@@ -10,8 +10,8 @@ import { HOTELS } from '../data/hotels'
 import { useStore } from '../store/useStore'
 
 export default function LandingPage() {
+  const nav = useNavigate()
   const query = useStore((s) => s.query)
-  const setQuery = useStore((s) => s.setQuery)
   const category = useStore((s) => s.category)
   const setCategory = useStore((s) => s.setCategory)
   const vegFilter = useStore((s) => s.vegFilter)
@@ -23,21 +23,12 @@ export default function LandingPage() {
     if (category) list = list.filter((h) => h.categories.includes(category))
     if (vegFilter === 'veg') list = list.filter((h) => h.veg === 'veg' || h.veg === 'both')
     if (vegFilter === 'nonveg') list = list.filter((h) => h.veg === 'nonveg' || h.veg === 'both')
-    if (query.trim()) {
-      const q = query.trim().toLowerCase()
-      list = list.filter(
-        (h) =>
-          h.name.toLowerCase().includes(q) ||
-          h.tagline.toLowerCase().includes(q) ||
-          h.menu.some((m) => m.name.toLowerCase().includes(q))
-      )
-    }
     if (sortBy === 'rating') list.sort((a, b) => b.rating - a.rating)
     if (sortBy === 'distance') list.sort((a, b) => a.distance[uni] - b.distance[uni])
     if (sortBy === 'price-low') list.sort((a, b) => a.priceForTwo - b.priceForTwo)
     if (sortBy === 'price-high') list.sort((a, b) => b.priceForTwo - a.priceForTwo)
     return list
-  }, [category, vegFilter, query, sortBy, uni])
+  }, [category, vegFilter, sortBy, uni])
 
   return (
     <main className="landing">
@@ -60,17 +51,18 @@ export default function LandingPage() {
             <AddressSelector />
           </div>
 
-          <div className="hero-search rise">
-            <div className="hs-icon"><Search size={18} /></div>
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search biryani, mandi, shawarma, or a hotel…"
-            />
-            <button className="hs-cta" onClick={() => document.getElementById('hotels-grid')?.scrollIntoView({ behavior: 'smooth' })}>
-              Find food
-            </button>
-          </div>
+          <button
+            type="button"
+            className="hero-search rise"
+            onClick={() => nav('/search')}
+            aria-label="Open search"
+          >
+            <span className="hs-icon"><Search size={18} /></span>
+            <span className="hs-placeholder">
+              {query ? query : 'Search biryani, mandi, shawarma, or a hotel…'}
+            </span>
+            <span className="hs-cta">Search</span>
+          </button>
 
           <div className="hero-trust rise">
             <span><Shield size={14} /> Hostel-tested</span>
@@ -207,6 +199,8 @@ export default function LandingPage() {
 
         .hero-search {
           display: flex; align-items: center;
+          width: 100%;
+          text-align: left;
           background: var(--paper);
           border: 1px solid var(--line-strong);
           border-radius: 999px;
@@ -214,24 +208,27 @@ export default function LandingPage() {
           box-shadow: var(--shadow-md);
           max-width: 640px;
           gap: 10px;
+          cursor: pointer;
           transition: border-color .2s, transform .2s;
         }
-        .hero-search:focus-within { border-color: var(--brand-orange); transform: translateY(-1px); }
+        .hero-search:hover { border-color: var(--brand-orange); transform: translateY(-1px); }
         .hs-icon { color: var(--ink-mute); display: inline-flex; }
-        .hero-search input {
+        .hs-placeholder {
           flex: 1;
-          border: 0; outline: 0; background: transparent;
-          padding: 14px 0; font-size: 1rem;
-          color: var(--ink);
+          font-size: 1rem;
+          color: var(--ink-faint);
+          padding: 14px 0;
+          white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         .hs-cta {
           background: var(--brand-orange); color: #fff;
           font-weight: 600;
           padding: 12px 22px; border-radius: 999px;
           font-size: 0.95rem;
+          flex-shrink: 0;
           transition: background .2s, transform .2s;
         }
-        .hs-cta:hover { background: var(--brand-orange-deep); transform: translateY(-1px); }
+        .hero-search:hover .hs-cta { background: var(--brand-orange-deep); }
 
         .hero-trust {
           display: flex; gap: 20px; flex-wrap: wrap;
