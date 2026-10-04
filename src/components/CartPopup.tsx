@@ -3,6 +3,12 @@ import { ShoppingBag, ArrowRight } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useStore } from '../store/useStore'
 
+/**
+ * Cart indicator pinned to the center of the viewport.
+ *
+ * Positioning uses an outer non-animated wrapper so framer-motion's internal
+ * transform (scale/opacity) doesn't fight CSS translate(-50%, -50%) centering.
+ */
 export default function CartPopup() {
   const cart = useStore((s) => s.cart)
   const loc = useLocation()
@@ -15,43 +21,49 @@ export default function CartPopup() {
   return (
     <AnimatePresence>
       {show && (
-        <motion.div
-          className="cart-pop"
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-        >
-          <Link to="/cart" className="cp-inner">
-            <div className="cp-left">
-              <span className="cp-icon">
-                <ShoppingBag size={20} />
-                <span className="cp-badge">{count}</span>
-              </span>
-              <div className="cp-text">
-                <div className="cp-top">{count} item{count > 1 ? 's' : ''} from <strong>{cart[0].hotelName}</strong></div>
-                <div className="cp-sub">Subtotal ₹{subtotal} · Review & checkout</div>
+        <div className="cart-pop-wrap">
+          <motion.div
+            className="cart-pop"
+            initial={{ opacity: 0, scale: 0.9, y: 8 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 8 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 26 }}
+          >
+            <Link to="/cart" className="cp-inner">
+              <div className="cp-left">
+                <span className="cp-icon">
+                  <ShoppingBag size={20} />
+                  <span className="cp-badge">{count}</span>
+                </span>
+                <div className="cp-text">
+                  <div className="cp-top">{count} item{count > 1 ? 's' : ''} from <strong>{cart[0].hotelName}</strong></div>
+                  <div className="cp-sub">Subtotal ₹{subtotal} · Review & checkout</div>
+                </div>
               </div>
-            </div>
-            <div className="cp-right">
-              View cart <ArrowRight size={16} />
-            </div>
-          </Link>
+              <div className="cp-right">
+                View cart <ArrowRight size={16} />
+              </div>
+            </Link>
+          </motion.div>
 
           <style>{`
-            .cart-pop {
+            .cart-pop-wrap {
               position: fixed;
-              left: 50%; transform: translateX(-50%);
-              bottom: 22px;
+              top: 50%; left: 50%;
+              transform: translate(-50%, -50%);
               z-index: 70;
-              width: min(620px, 92vw);
+              width: min(520px, 92vw);
+              pointer-events: none;
             }
+            .cart-pop { pointer-events: auto; }
             .cp-inner {
               display: flex; align-items: center; justify-content: space-between;
               background: var(--ink); color: #fff;
               padding: 12px 16px;
               border-radius: 999px;
-              box-shadow: 0 24px 60px -14px rgba(20,18,18,0.5), 0 6px 20px -4px rgba(242,106,31,0.3);
+              box-shadow:
+                0 32px 80px -18px rgba(20,18,18,0.55),
+                0 10px 30px -8px rgba(242,106,31,0.35);
               gap: 14px;
             }
             .cp-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
@@ -80,8 +92,12 @@ export default function CartPopup() {
               padding: 9px 16px; border-radius: 999px;
               flex-shrink: 0;
             }
+            @media (max-width: 420px) {
+              .cp-right { padding: 8px 12px; font-size: 0.8rem; }
+              .cp-top { max-width: 44vw; }
+            }
           `}</style>
-        </motion.div>
+        </div>
       )}
     </AnimatePresence>
   )

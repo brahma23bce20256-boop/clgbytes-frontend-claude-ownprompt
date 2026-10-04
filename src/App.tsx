@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import CartPopup from './components/CartPopup'
+import LiveOrdersPill from './components/LiveOrdersPill'
 import ScrollToTop from './components/ScrollToTop'
 import LandingPage from './pages/LandingPage'
 import SearchPage from './pages/SearchPage'
@@ -30,6 +31,7 @@ export default function App() {
         <Route path="/about" element={<AboutPage />} />
       </Routes>
       <CartPopup />
+      <LiveOrdersPill />
       <Footer />
     </>
   )
