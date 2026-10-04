@@ -68,7 +68,7 @@ export default function AddressSelector({ variant = 'full' }: Props) {
       )}
 
       <style>{`
-        .addr-root { position: relative; display: inline-block; }
+        .addr-root { position: relative; display: inline-block; z-index: 70; }
         .addr-trigger {
           display: inline-flex; align-items: center; gap: 12px;
           padding: 10px 14px;
@@ -105,8 +105,10 @@ export default function AddressSelector({ variant = 'full' }: Props) {
           border: 1px solid var(--line-strong);
           border-radius: var(--radius-md);
           padding: 10px;
-          z-index: 60;
-          box-shadow: var(--shadow-lg);
+          z-index: 100;
+          box-shadow:
+            0 24px 60px -14px rgba(20,18,18,0.3),
+            0 10px 22px -6px rgba(20,18,18,0.14);
         }
         .addr-dropdown-header {
           font-size: 0.8rem; font-weight: 600; color: var(--ink); padding: 10px 12px 6px;
