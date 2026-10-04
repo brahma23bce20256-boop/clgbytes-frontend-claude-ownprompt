@@ -48,10 +48,9 @@ export default function Header() {
       <style>{`
         .site-header {
           position: sticky; top: 0; z-index: 50;
-          background: color-mix(in oklab, var(--cream) 85%, white 15%);
-          backdrop-filter: saturate(140%) blur(12px);
-          -webkit-backdrop-filter: saturate(140%) blur(12px);
-          border-bottom: 1px solid var(--line);
+          /* Match the exact logo background so the orange tile blends seamlessly */
+          background: var(--brand-orange);
+          border-bottom: 1px solid rgba(0,0,0,0.08);
         }
         .header-inner {
           height: var(--header-h);
@@ -64,6 +63,11 @@ export default function Header() {
         .header-mid { justify-self: center; }
         .header-right { justify-self: end; display: inline-flex; align-items: center; gap: 8px; }
 
+        /* Logo wordmark re-colored for orange chrome */
+        .site-header .logo-mark { box-shadow: none; }
+        .site-header .logo-word-main { color: #fff; }
+        .site-header .logo-word-sub { color: rgba(255,255,255,0.78); }
+
         .hd-link, .hd-cart, .hd-profile {
           position: relative;
           display: inline-flex; align-items: center; gap: 8px;
@@ -71,25 +75,26 @@ export default function Header() {
           border-radius: 999px;
           font-weight: 600;
           font-size: 0.9rem;
-          color: var(--ink);
+          color: #fff;
           border: 1px solid transparent;
           transition: background .18s, border-color .18s, color .18s;
         }
-        .hd-link:hover { background: var(--brand-orange-soft); color: var(--brand-orange-deep); }
+        .hd-link:hover { background: rgba(0,0,0,0.14); color: #fff; }
         .hd-cart {
           background: var(--ink); color: #fff;
         }
         .hd-cart:hover { background: #000; }
         .hd-badge {
-          background: var(--brand-orange); color: #fff;
-          font-size: 0.7rem; font-weight: 700;
+          background: #fff; color: var(--brand-orange-deep);
+          font-size: 0.7rem; font-weight: 800;
           padding: 1px 7px; border-radius: 999px;
           margin-left: 2px;
           min-width: 18px; text-align: center;
         }
         .hd-profile {
           background: var(--paper);
-          border-color: var(--line-strong);
+          color: var(--ink);
+          border-color: rgba(0,0,0,0.08);
         }
         .hd-profile:hover { border-color: var(--ink); }
         .hd-avatar {
