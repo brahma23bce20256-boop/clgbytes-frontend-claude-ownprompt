@@ -37,7 +37,8 @@ export default function LiveOrdersPill() {
             .lo-pill {
               position: fixed;
               left: 0;
-              bottom: 22px;
+              /* sits just above the cart popup (which lives at bottom: 20px with ~60px height) */
+              bottom: 92px;
               z-index: 65;
             }
             .lo-inner {

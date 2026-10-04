@@ -49,8 +49,9 @@ export default function CartPopup() {
           <style>{`
             .cart-pop-wrap {
               position: fixed;
-              top: 50%; left: 50%;
-              transform: translate(-50%, -50%);
+              left: 50%;
+              bottom: 20px;
+              transform: translateX(-50%);
               z-index: 70;
               width: min(520px, 92vw);
               pointer-events: none;
@@ -58,43 +59,54 @@ export default function CartPopup() {
             .cart-pop { pointer-events: auto; }
             .cp-inner {
               display: flex; align-items: center; justify-content: space-between;
-              background: var(--ink); color: #fff;
-              padding: 12px 16px;
+              background: var(--paper);
+              color: var(--ink);
+              padding: 10px 10px 10px 14px;
               border-radius: 999px;
+              border: 1px solid var(--line-strong);
               box-shadow:
-                0 32px 80px -18px rgba(20,18,18,0.55),
-                0 10px 30px -8px rgba(242,106,31,0.35);
+                0 24px 60px -16px rgba(20,18,18,0.3),
+                0 8px 20px -6px rgba(242,106,31,0.22);
               gap: 14px;
             }
             .cp-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
             .cp-icon {
               position: relative;
-              width: 42px; height: 42px; border-radius: 999px;
+              width: 40px; height: 40px; border-radius: 999px;
               background: var(--brand-orange);
+              color: #fff;
               display: inline-flex; align-items: center; justify-content: center;
               flex-shrink: 0;
+              box-shadow: 0 6px 16px -6px rgba(242,106,31,0.55);
             }
             .cp-badge {
               position: absolute; top: -4px; right: -4px;
-              background: #fff; color: var(--brand-orange-deep);
+              background: var(--ink); color: #fff;
               font-size: 0.7rem; font-weight: 800;
               padding: 1px 6px; border-radius: 999px;
               min-width: 18px; text-align: center;
+              border: 2px solid var(--paper);
             }
             .cp-text { min-width: 0; }
-            .cp-top { font-size: 0.9rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 56vw; }
-            .cp-top strong { color: var(--brand-orange-glow); }
-            .cp-sub { font-size: 0.76rem; color: #cbc6c3; margin-top: 2px; }
+            .cp-top {
+              font-size: 0.9rem; font-weight: 600;
+              color: var(--ink);
+              white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 50vw;
+            }
+            .cp-top strong { color: var(--brand-orange-deep); font-weight: 700; }
+            .cp-sub { font-size: 0.76rem; color: var(--ink-mute); margin-top: 2px; }
             .cp-right {
               display: inline-flex; align-items: center; gap: 6px;
-              font-size: 0.88rem; font-weight: 600;
+              font-size: 0.88rem; font-weight: 700;
               background: var(--brand-orange); color: #fff;
-              padding: 9px 16px; border-radius: 999px;
+              padding: 10px 16px; border-radius: 999px;
               flex-shrink: 0;
+              transition: background .18s;
             }
+            .cp-inner:hover .cp-right { background: var(--brand-orange-deep); }
             @media (max-width: 420px) {
-              .cp-right { padding: 8px 12px; font-size: 0.8rem; }
-              .cp-top { max-width: 44vw; }
+              .cp-right { padding: 9px 13px; font-size: 0.82rem; }
+              .cp-top { max-width: 40vw; }
             }
           `}</style>
         </div>
