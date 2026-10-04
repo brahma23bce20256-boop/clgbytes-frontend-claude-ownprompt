@@ -678,18 +678,16 @@ Error generating stack: `+s.message+`
         .vt-indicator[data-pos="nonveg"] { transform: translateX(calc(200% + 4px)); }
       `})]})}const Df=[{k:"relevance",label:"Relevance"},{k:"rating",label:"Rating (high → low)"},{k:"distance",label:"Distance (near first)"},{k:"price-low",label:"Price for two (low → high)"},{k:"price-high",label:"Price for two (high → low)"}];function Dj(){var c;const[e,t]=j.useState(!1),n=j.useRef(null),r=L(u=>u.sortBy),i=L(u=>u.setSortBy),s=L(u=>u.vegFilter),o=L(u=>u.setVegFilter);j.useEffect(()=>{const u=d=>{var f;(f=n.current)!=null&&f.contains(d.target)||t(!1)};return document.addEventListener("mousedown",u),()=>document.removeEventListener("mousedown",u)},[]);const l=((c=Df.find(u=>u.k===r))==null?void 0:c.label)??"Relevance";return a.jsxs("div",{className:"filter-bar",children:[a.jsxs("div",{className:"filter-left",ref:n,children:[a.jsxs("button",{className:`filter-btn ${e?"open":""}`,onClick:()=>t(u=>!u),children:[a.jsx(Gx,{size:16}),a.jsxs("span",{children:["Filter · ",a.jsx("strong",{children:l})]})]}),e&&a.jsxs("div",{className:"filter-dropdown rise",children:[a.jsx("div",{className:"filter-dropdown-title",children:"Sort by"}),Df.map(u=>a.jsxs("button",{className:`filter-opt ${r===u.k?"active":""}`,onClick:()=>{i(u.k),t(!1)},children:[a.jsx("span",{children:u.label}),r===u.k&&a.jsx(vc,{size:14})]},u.k))]})]}),a.jsxs("div",{className:"filter-right",children:[a.jsxs("button",{className:`diet-btn ${s==="veg"?"on-veg":""}`,onClick:()=>o(s==="veg"?"all":"veg"),"aria-pressed":s==="veg",children:[a.jsx("span",{className:"vn-mark"}),"Veg"]}),a.jsxs("button",{className:`diet-btn ${s==="nonveg"?"on-nonveg":""}`,onClick:()=>o(s==="nonveg"?"all":"nonveg"),"aria-pressed":s==="nonveg",children:[a.jsx("span",{className:"vn-mark nonveg"}),"Non-veg"]}),a.jsx("div",{className:"filter-toggle-wrap",children:a.jsx(Zg,{})})]}),a.jsx("style",{children:`
         .filter-bar {
-          display: flex; align-items: center; justify-content: space-between;
-          gap: 14px;
-          padding: 14px 18px;
-          background: var(--paper);
-          border: 1px solid var(--line);
-          border-radius: var(--radius-md);
-          box-shadow: var(--shadow-sm);
-          margin: 18px 0 22px;
-          flex-wrap: wrap;
+          display: flex; align-items: center; justify-content: flex-start;
+          gap: 10px;
+          margin: 14px 0 18px;
+          flex-wrap: nowrap;
           position: relative;
+          overflow-x: auto;
+          scrollbar-width: none;
         }
-        .filter-left { position: relative; }
+        .filter-bar::-webkit-scrollbar { display: none; }
+        .filter-left { position: relative; z-index: 90; flex-shrink: 0; }
         .filter-btn {
           display: inline-flex; align-items: center; gap: 10px;
           padding: 9px 16px;
@@ -709,10 +707,12 @@ Error generating stack: `+s.message+`
           min-width: 280px;
           background: var(--paper);
           border: 1px solid var(--line-strong);
-          box-shadow: var(--shadow-lg);
+          box-shadow:
+            0 24px 60px -14px rgba(20,18,18,0.3),
+            0 10px 22px -6px rgba(20,18,18,0.14);
           border-radius: var(--radius-md);
           padding: 8px;
-          z-index: 50;
+          z-index: 90;
         }
         .filter-dropdown-title {
           font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
@@ -746,20 +746,11 @@ Error generating stack: `+s.message+`
         @media (min-width: 760px) { .filter-toggle-wrap { display: block; } }
 
         @media (max-width: 600px) {
-          .filter-bar {
-            padding: 10px 12px;
-            margin: 14px 0 18px;
-            border-radius: var(--radius-sm);
-            gap: 8px;
-          }
+          .filter-bar { gap: 8px; }
           .filter-btn { padding: 8px 12px; font-size: 0.82rem; gap: 6px; }
-          .filter-right { gap: 6px; width: 100%; justify-content: flex-start; }
+          .filter-right { gap: 6px; flex-wrap: nowrap; }
           .diet-btn { padding: 7px 11px; font-size: 0.8rem; }
-          .filter-dropdown {
-            left: 0; right: auto;
-            min-width: 240px;
-            max-width: 86vw;
-          }
+          .filter-dropdown { min-width: 240px; max-width: 86vw; }
         }
       `})]})}function Vj({hotel:e,index:t=0}){const n=L(o=>o.selectedUniversity),r=e.distance[n],i=Math.max(20,Math.round(r*10+15)),s=e.veg==="veg"?a.jsx("span",{className:"hc-dietband veg",children:"Pure veg"}):e.veg==="nonveg"?a.jsx("span",{className:"hc-dietband nonveg",children:"Non-veg"}):a.jsx("span",{className:"hc-dietband both",children:"Veg + Non-veg"});return a.jsxs(te,{to:`/menu/${e.id}`,className:"hotel-card card rise",style:{animationDelay:`${t*60}ms`},children:[a.jsxs("div",{className:"hc-cover",children:[a.jsx("img",{src:e.cover,alt:e.name,loading:"lazy"}),a.jsx("div",{className:"hc-cover-shade"}),a.jsx("div",{className:"hc-ribbon",children:"Order by 6pm · delivered by 8pm"}),s]}),a.jsxs("div",{className:"hc-body",children:[a.jsxs("div",{className:"hc-head",children:[a.jsx("h3",{className:"hc-name",children:e.name}),a.jsxs("span",{className:"hc-rating",children:[a.jsx(xm,{size:13,fill:"currentColor",strokeWidth:0}),e.rating.toFixed(1)]})]}),a.jsx("div",{className:"hc-tag",children:e.tagline}),a.jsxs("div",{className:"hc-meta",children:[a.jsxs("span",{className:"hc-meta-item",children:[a.jsx(ji,{size:13})," ",i,"–",i+10," min"]}),a.jsx("span",{className:"hc-meta-dot"}),a.jsxs("span",{className:"hc-meta-item",children:[a.jsx(gc,{size:13})," ₹15 delivery"]}),a.jsx("span",{className:"hc-meta-dot"}),a.jsxs("span",{className:"hc-meta-item",children:["₹",e.priceForTwo," for two"]})]}),a.jsxs("div",{className:"hc-location",children:[a.jsx($t,{size:13}),a.jsxs("span",{children:[e.location," · ",a.jsxs("strong",{children:[r," km"]})," from ",_j(n)]})]}),a.jsx("div",{className:"hc-cats",children:e.categories.slice(0,4).map(o=>a.jsx("span",{className:"hc-cat",children:Fj(o)},o))})]}),a.jsx("style",{children:`
         .hotel-card { overflow: hidden; display: flex; flex-direction: column; }

@@ -78,18 +78,16 @@ export default function FilterBar() {
 
       <style>{`
         .filter-bar {
-          display: flex; align-items: center; justify-content: space-between;
-          gap: 14px;
-          padding: 14px 18px;
-          background: var(--paper);
-          border: 1px solid var(--line);
-          border-radius: var(--radius-md);
-          box-shadow: var(--shadow-sm);
-          margin: 18px 0 22px;
-          flex-wrap: wrap;
+          display: flex; align-items: center; justify-content: flex-start;
+          gap: 10px;
+          margin: 14px 0 18px;
+          flex-wrap: nowrap;
           position: relative;
+          overflow-x: auto;
+          scrollbar-width: none;
         }
-        .filter-left { position: relative; }
+        .filter-bar::-webkit-scrollbar { display: none; }
+        .filter-left { position: relative; z-index: 90; flex-shrink: 0; }
         .filter-btn {
           display: inline-flex; align-items: center; gap: 10px;
           padding: 9px 16px;
@@ -109,10 +107,12 @@ export default function FilterBar() {
           min-width: 280px;
           background: var(--paper);
           border: 1px solid var(--line-strong);
-          box-shadow: var(--shadow-lg);
+          box-shadow:
+            0 24px 60px -14px rgba(20,18,18,0.3),
+            0 10px 22px -6px rgba(20,18,18,0.14);
           border-radius: var(--radius-md);
           padding: 8px;
-          z-index: 50;
+          z-index: 90;
         }
         .filter-dropdown-title {
           font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
@@ -146,20 +146,11 @@ export default function FilterBar() {
         @media (min-width: 760px) { .filter-toggle-wrap { display: block; } }
 
         @media (max-width: 600px) {
-          .filter-bar {
-            padding: 10px 12px;
-            margin: 14px 0 18px;
-            border-radius: var(--radius-sm);
-            gap: 8px;
-          }
+          .filter-bar { gap: 8px; }
           .filter-btn { padding: 8px 12px; font-size: 0.82rem; gap: 6px; }
-          .filter-right { gap: 6px; width: 100%; justify-content: flex-start; }
+          .filter-right { gap: 6px; flex-wrap: nowrap; }
           .diet-btn { padding: 7px 11px; font-size: 0.8rem; }
-          .filter-dropdown {
-            left: 0; right: auto;
-            min-width: 240px;
-            max-width: 86vw;
-          }
+          .filter-dropdown { min-width: 240px; max-width: 86vw; }
         }
       `}</style>
     </div>
