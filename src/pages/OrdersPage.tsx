@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { ChevronRight, Clock, ReceiptText } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 import { useStore, Order } from '../store/useStore'
 
 const STATUS_LABELS: Record<Order['status'], string> = {
@@ -47,70 +47,62 @@ export default function OrdersPage() {
 
       <div className="orders-list">
         {orders.map((o) => (
-          <Link key={o.id} to={`/track/${o.id}`} className="order-card card">
-            <div className="oc-left">
-              <div className="oc-icon">
-                <ReceiptText size={20} />
-              </div>
-              <div>
-                <div className="oc-top">
-                  <strong>{o.hotelName}</strong>
-                  <span className="chip">{o.id}</span>
-                </div>
-                <div className="oc-items">
-                  {o.lines.slice(0, 3).map((l) => `${l.qty}× ${l.item.name}`).join(' · ')}
-                  {o.lines.length > 3 && ` +${o.lines.length - 3} more`}
-                </div>
-                <div className="oc-time">
-                  <Clock size={12} /> {new Date(o.createdAt).toLocaleString()}
-                </div>
-              </div>
-            </div>
-
-            <div className="oc-right">
-              <span className={`oc-status s-${o.status}`}>{STATUS_LABELS[o.status]}</span>
-              <div className="oc-total">₹{o.total}</div>
-              <ChevronRight size={18} className="oc-arrow" />
-            </div>
+          <Link key={o.id} to={`/track/${o.id}`} className="order-card">
+            <div className="oc-token">{o.id}</div>
+            <span className={`oc-status s-${o.status}`}>{STATUS_LABELS[o.status]}</span>
+            <div className="oc-total">₹{o.total}</div>
+            <ChevronRight size={16} className="oc-arrow" />
           </Link>
         ))}
       </div>
 
       <style>{`
-        .orders-list { display: flex; flex-direction: column; gap: 14px; }
+        .orders-list { display: flex; flex-direction: column; gap: 8px; }
         .order-card {
-          display: flex; justify-content: space-between; align-items: center;
-          padding: 18px 22px;
-          gap: 16px;
+          display: flex; align-items: center;
+          gap: 12px;
+          padding: 10px 14px;
+          background: var(--paper);
+          border: 1px solid var(--line);
+          border-radius: 12px;
+          color: var(--ink);
+          transition: border-color .18s, transform .18s;
         }
-        .oc-left { display: flex; gap: 14px; align-items: flex-start; min-width: 0; }
-        .oc-icon {
-          width: 42px; height: 42px; border-radius: 12px;
-          background: var(--brand-orange-soft); color: var(--brand-orange-deep);
-          display: inline-flex; align-items: center; justify-content: center;
+        .order-card:hover { border-color: var(--brand-orange); transform: translateX(2px); }
+        .oc-token {
+          font-family: var(--font-display);
+          font-weight: 700;
+          font-size: 0.95rem;
+          letter-spacing: 0.01em;
+          color: var(--ink);
           flex-shrink: 0;
         }
-        .oc-top { display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .oc-top strong { font-weight: 700; }
-        .oc-items { font-size: 0.86rem; color: var(--ink-mute); margin-top: 4px; }
-        .oc-time { font-size: 0.72rem; color: var(--ink-faint); margin-top: 6px; display: inline-flex; align-items: center; gap: 4px; }
-        .oc-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
         .oc-status {
-          font-size: 0.72rem;
-          padding: 4px 10px; border-radius: 999px;
+          margin-left: auto;
+          font-size: 0.68rem;
+          padding: 3px 9px; border-radius: 999px;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.04em;
+          white-space: nowrap;
         }
         .s-placed { background: #FEF3C7; color: #92400E; }
         .s-accepted { background: var(--brand-orange-soft); color: var(--brand-orange-deep); }
         .s-kitchen { background: #DBEAFE; color: #1E40AF; }
         .s-out-for-delivery { background: #E0E7FF; color: #3730A3; }
         .s-delivered { background: var(--veg-soft); color: #065F46; }
-        .oc-total { font-weight: 700; font-size: 1rem; }
-        .oc-arrow { color: var(--ink-mute); }
-        @media (max-width: 640px) {
-          .oc-right { flex-direction: column; align-items: flex-end; gap: 6px; }
+        .oc-total {
+          font-weight: 700; font-size: 0.95rem;
+          min-width: 56px; text-align: right;
+          flex-shrink: 0;
+        }
+        .oc-arrow { color: var(--ink-faint); flex-shrink: 0; }
+
+        @media (max-width: 420px) {
+          .order-card { padding: 10px 12px; gap: 8px; }
+          .oc-token { font-size: 0.88rem; }
+          .oc-status { font-size: 0.62rem; padding: 3px 7px; }
+          .oc-total { font-size: 0.9rem; min-width: 48px; }
           .oc-arrow { display: none; }
         }
       `}</style>

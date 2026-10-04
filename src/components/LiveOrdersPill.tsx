@@ -18,13 +18,14 @@ export default function LiveOrdersPill() {
   return (
     <AnimatePresence>
       {show && (
-        <motion.div
-          className="lo-pill"
-          initial={{ x: -80, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: -80, opacity: 0 }}
-          transition={{ type: 'spring', stiffness: 320, damping: 28 }}
-        >
+        <div className="lo-pill-wrap">
+          <motion.div
+            className="lo-pill"
+            initial={{ x: -80, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: -80, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 28 }}
+          >
           <Link
             to="/orders"
             className="lo-inner"
@@ -37,13 +38,15 @@ export default function LiveOrdersPill() {
           </Link>
 
           <style>{`
-            .lo-pill {
+            .lo-pill-wrap {
               position: fixed;
               left: 0;
-              /* sits just above the cart popup (which lives at bottom: 20px with ~60px height) */
-              bottom: 92px;
+              top: 50%;
+              transform: translateY(-50%);
               z-index: 65;
+              pointer-events: none;
             }
+            .lo-pill { pointer-events: auto; }
             .lo-inner {
               display: inline-flex; align-items: center; justify-content: center;
               background: var(--paper);
@@ -76,7 +79,8 @@ export default function LiveOrdersPill() {
               50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
             }
           `}</style>
-        </motion.div>
+          </motion.div>
+        </div>
       )}
     </AnimatePresence>
   )
