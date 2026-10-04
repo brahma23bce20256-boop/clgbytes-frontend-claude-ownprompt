@@ -65,9 +65,13 @@ export default function CartPage() {
                   <div className="cl-price mute">₹{l.item.price} × {l.qty}</div>
                 </div>
                 <div className="cl-qty">
-                  <button onClick={() => decrement(l.item.id)} aria-label="decrement"><Minus size={14} /></button>
+                  <button type="button" onClick={() => decrement(l.item.id)} aria-label="Decrease quantity">
+                    <Minus size={16} strokeWidth={2.5} />
+                  </button>
                   <span>{l.qty}</span>
-                  <button onClick={() => addToCart(l.item, l.hotelId, l.hotelName)} aria-label="increment"><Plus size={14} /></button>
+                  <button type="button" onClick={() => addToCart(l.item, l.hotelId, l.hotelName)} aria-label="Increase quantity">
+                    <Plus size={16} strokeWidth={2.5} />
+                  </button>
                 </div>
                 <div className="cl-total">₹{l.qty * l.item.price}</div>
                 <button className="cl-remove" onClick={() => removeFromCart(l.item.id)} aria-label="remove">
@@ -144,25 +148,54 @@ export default function CartPage() {
         .btn-link:hover { text-decoration: underline; }
 
         .cart-line {
-          display: grid; grid-template-columns: 20px 1fr auto auto auto;
+          display: grid;
+          grid-template-columns: 20px 1fr auto auto auto;
           gap: 14px; align-items: center;
-          padding: 14px 0;
+          padding: 16px 0;
           border-bottom: 1px dashed var(--line);
         }
         .cl-info { min-width: 0; }
         .cl-name { font-weight: 600; font-size: 0.95rem; }
         .cl-price { font-size: 0.8rem; margin-top: 3px; }
+
+        /* Quantity stepper */
         .cl-qty {
           display: inline-flex; align-items: center;
           background: var(--brand-orange); color: #fff;
-          border-radius: 10px; overflow: hidden;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: 0 6px 14px -6px rgba(242,106,31,0.45);
+          user-select: none;
         }
-        .cl-qty button { padding: 6px 9px; color: #fff; }
-        .cl-qty button:hover { background: var(--brand-orange-deep); }
-        .cl-qty span { padding: 0 8px; font-weight: 700; min-width: 20px; text-align: center; font-size: 0.9rem; }
+        .cl-qty button {
+          display: inline-flex; align-items: center; justify-content: center;
+          width: 34px; height: 34px;
+          padding: 0;
+          color: #fff;
+          background: transparent;
+          transition: background .15s;
+        }
+        .cl-qty button:hover,
+        .cl-qty button:active { background: rgba(0,0,0,0.18); }
+        .cl-qty button:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
+        .cl-qty span {
+          padding: 0 4px;
+          font-weight: 700;
+          min-width: 24px;
+          text-align: center;
+          font-size: 0.95rem;
+          line-height: 1;
+        }
+
         .cl-total { font-weight: 700; font-size: 0.95rem; min-width: 60px; text-align: right; }
-        .cl-remove { color: var(--ink-mute); padding: 6px; transition: color .18s; }
-        .cl-remove:hover { color: var(--nonveg); }
+        .cl-remove {
+          display: inline-flex; align-items: center; justify-content: center;
+          width: 32px; height: 32px;
+          color: var(--ink-mute);
+          border-radius: 8px;
+          transition: color .18s, background .18s;
+        }
+        .cl-remove:hover { color: var(--nonveg); background: var(--nonveg-soft); }
 
         .cl-add { display: inline-block; margin-top: 14px; }
 
@@ -193,9 +226,23 @@ export default function CartPage() {
         @media (max-width: 900px) {
           .cart-grid { grid-template-columns: 1fr; }
           .cart-summary { position: static; }
-          .cart-line { grid-template-columns: 20px 1fr auto; }
-          .cl-total { grid-column: 2 / 4; text-align: left; padding-left: 34px; }
+
+          /* Row 1: [v]  Name                       [x]
+             Row 2:      [-] 2 [+]           ₹100       */
+          .cart-line {
+            grid-template-columns: 20px 1fr auto;
+            row-gap: 10px;
+          }
+          .vn-mark { grid-column: 1; grid-row: 1; }
+          .cl-info { grid-column: 2; grid-row: 1; }
           .cl-remove { grid-column: 3; grid-row: 1; }
+          .cl-qty { grid-column: 2; grid-row: 2; justify-self: start; }
+          .cl-total {
+            grid-column: 3; grid-row: 2;
+            justify-self: end;
+            padding-left: 0;
+            text-align: right;
+          }
         }
       `}</style>
     </main>
