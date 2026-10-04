@@ -497,19 +497,16 @@ Error generating stack: `+s.message+`
             .cp-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
             .cp-icon {
               position: relative;
-              width: 40px; height: 40px; border-radius: 999px;
-              background: var(--brand-orange);
-              color: #fff;
               display: inline-flex; align-items: center; justify-content: center;
+              color: var(--ink);
               flex-shrink: 0;
-              box-shadow: 0 6px 16px -6px rgba(242,106,31,0.55);
             }
             .cp-badge {
-              position: absolute; top: -4px; right: -4px;
-              background: var(--ink); color: #fff;
-              font-size: 0.7rem; font-weight: 800;
+              position: absolute; top: -6px; right: -8px;
+              background: var(--brand-orange); color: #fff;
+              font-size: 0.68rem; font-weight: 800;
               padding: 1px 6px; border-radius: 999px;
-              min-width: 18px; text-align: center;
+              min-width: 16px; text-align: center;
               border: 2px solid var(--paper);
             }
             .cp-text { min-width: 0; }
