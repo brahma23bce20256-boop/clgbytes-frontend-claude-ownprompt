@@ -32,7 +32,7 @@ export default function CartPopup() {
             <Link to="/cart" className="cp-inner">
               <div className="cp-left">
                 <span className="cp-icon">
-                  <ShoppingBag size={20} />
+                  <ShoppingBag size={28} strokeWidth={2.1} />
                   <span className="cp-badge">{count}</span>
                 </span>
                 <div className="cp-text">
@@ -77,7 +77,7 @@ export default function CartPopup() {
               flex-shrink: 0;
             }
             .cp-badge {
-              position: absolute; top: -6px; right: -8px;
+              position: absolute; top: -8px; right: -10px;
               background: var(--brand-orange); color: #fff;
               font-size: 0.68rem; font-weight: 800;
               padding: 1px 6px; border-radius: 999px;
