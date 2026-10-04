@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Search, Clock, Sparkles, Zap, Shield, ArrowRight, PartyPopper } from 'lucide-react'
+import { Search, Sparkles, Zap, Shield, ArrowRight, PartyPopper } from 'lucide-react'
 import AddressSelector from '../components/AddressSelector'
+import BannerCarousel from '../components/BannerCarousel'
 import FilterBar from '../components/FilterBar'
 import HotelCard from '../components/HotelCard'
 import { CATEGORIES } from '../data/categories'
@@ -82,47 +83,10 @@ export default function LandingPage() {
         <div className="hero-decor" aria-hidden />
       </section>
 
-      {/* ============ OFFER BANNERS ============ */}
-      <section className="banners container">
-        <div className="banner banner-primary">
-          <div className="banner-text">
-            <span className="banner-chip"><Clock size={14} /> Daily cutoff</span>
-            <h2>Order by <strong>6:00 pm</strong>. Delivered by <strong>8:00 pm</strong>.</h2>
-            <p>One run per evening. Order early, we batch so you pay less — delivery stays flat.</p>
-          </div>
-          <div className="banner-clock" aria-hidden>
-            <div className="clock-ring">
-              <span className="clock-mark m-6pm">6</span>
-              <span className="clock-mark m-8pm">8</span>
-              <span className="clock-core">pm</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="banner-row">
-          <div className="banner-mini">
-            <span className="bm-emoji">🎉</span>
-            <div>
-              <h3>Flat ₹30 off</h3>
-              <p className="mute">Carts above ₹499</p>
-            </div>
-          </div>
-          <div className="banner-mini">
-            <span className="bm-emoji">🏍️</span>
-            <div>
-              <h3>Flat ₹15 delivery</h3>
-              <p className="mute">On orders over ₹299</p>
-            </div>
-          </div>
-          <div className="banner-mini">
-            <span className="bm-emoji">🤝</span>
-            <div>
-              <h3>Pay on delivery</h3>
-              <p className="mute">UPI · cash · at the gate</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ============ OFFER CAROUSEL ============ */}
+      <div className="container">
+        <BannerCarousel />
+      </div>
 
       {/* ============ CATEGORIES ============ */}
       <section className="container">
@@ -414,6 +378,18 @@ export default function LandingPage() {
         .cat-name { font-weight: 700; font-size: 1.05rem; }
         .cat-sub { font-size: 0.78rem; color: var(--ink-mute); margin-top: 4px; }
 
+        /* Mobile: 2-up tight tiles so they fit without feeling cramped */
+        @media (max-width: 600px) {
+          .cat-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+          }
+          .cat-tile { padding: 14px; border-radius: var(--radius-sm); }
+          .cat-emoji { font-size: 1.6rem; margin-bottom: 6px; }
+          .cat-name { font-size: 0.95rem; }
+          .cat-sub { font-size: 0.72rem; }
+        }
+
         /* --- HOTELS --- */
         .hotels-grid {
           display: grid;
@@ -481,9 +457,29 @@ export default function LandingPage() {
         .stat-label { font-size: 0.78rem; color: #cbc6c3; margin-top: 6px; line-height: 1.3; }
 
         @media (max-width: 900px) {
-          .banner-row { grid-template-columns: 1fr; }
-          .about-card { grid-template-columns: 1fr; padding: 30px; }
-          .banner-clock { display: none; }
+          .about-card { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
+          .about-right { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+          .hero { padding: 20px 0 10px; }
+          .hero-badges { margin-bottom: 14px; }
+          .hero-title { font-size: clamp(1.9rem, 8vw, 2.6rem); }
+          .hero-sub { font-size: 0.95rem; margin: 14px 0 20px; }
+          .hero-search { padding: 5px 5px 5px 16px; }
+          .hero-search input { font-size: 0.95rem; padding: 12px 0; }
+          .hs-cta { padding: 10px 16px; font-size: 0.85rem; }
+          .hero-trust { gap: 14px; font-size: 0.78rem; margin-top: 16px; }
+          .section-title h2 { font-size: 1.3rem; }
+          .section-title h2 small { font-size: 0.78rem; }
+          .hotels-grid { gap: 14px; }
+          .about-preview { margin-top: 40px; }
+          .about-card { padding: 24px; border-radius: var(--radius-lg); }
+          .about-left h2 { font-size: 1.5rem; }
+          .about-left p { font-size: 0.92rem; line-height: 1.6; }
+          .about-apology { padding: 14px 16px; font-size: 0.9rem; }
+          .about-right { gap: 10px; }
+          .about-stat { padding: 16px 14px; }
+          .stat-num { font-size: 1.8rem; }
         }
       `}</style>
     </main>

@@ -144,6 +144,23 @@ export default function FilterBar() {
         .diet-btn.on-nonveg { background: var(--nonveg-soft); border-color: var(--nonveg); color: #7F1D1D; }
         .filter-toggle-wrap { display: none; }
         @media (min-width: 760px) { .filter-toggle-wrap { display: block; } }
+
+        @media (max-width: 600px) {
+          .filter-bar {
+            padding: 10px 12px;
+            margin: 14px 0 18px;
+            border-radius: var(--radius-sm);
+            gap: 8px;
+          }
+          .filter-btn { padding: 8px 12px; font-size: 0.82rem; gap: 6px; }
+          .filter-right { gap: 6px; width: 100%; justify-content: flex-start; }
+          .diet-btn { padding: 7px 11px; font-size: 0.8rem; }
+          .filter-dropdown {
+            left: 0; right: auto;
+            min-width: 240px;
+            max-width: 86vw;
+          }
+        }
       `}</style>
     </div>
   )
