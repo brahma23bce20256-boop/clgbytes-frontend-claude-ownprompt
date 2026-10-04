@@ -183,13 +183,13 @@ export default function BannerCarousel() {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 18px;
-          padding: 24px 24px;
-          border-radius: var(--radius-lg);
+          gap: 14px;
+          padding: 16px 18px;
+          border-radius: var(--radius-md);
           overflow: hidden;
           color: #fff;
-          min-height: 180px;
-          box-shadow: var(--shadow-md);
+          min-height: 118px;
+          box-shadow: var(--shadow-sm);
         }
         .bc-body { position: relative; z-index: 1; flex: 1; min-width: 0; }
         .bc-art  { position: relative; z-index: 1; flex-shrink: 0; }
@@ -202,37 +202,37 @@ export default function BannerCarousel() {
         }
 
         .bc-chip {
-          display: inline-flex; align-items: center; gap: 5px;
-          padding: 5px 11px;
+          display: inline-flex; align-items: center; gap: 4px;
+          padding: 3px 9px;
           border-radius: 999px;
-          font-size: 0.72rem;
+          font-size: 0.66rem;
           font-weight: 700;
           letter-spacing: 0.03em;
-          margin-bottom: 10px;
+          margin-bottom: 7px;
         }
         .bc-chip-dark  { background: rgba(0,0,0,0.25); color: #fff; }
         .bc-chip-light { background: rgba(255,255,255,0.9); color: var(--ink); }
 
         .bc-title {
           font-family: var(--font-display);
-          font-size: clamp(1.4rem, 4.8vw, 2.1rem);
-          line-height: 1.08;
+          font-size: clamp(1.05rem, 4vw, 1.5rem);
+          line-height: 1.1;
           color: #fff;
-          margin: 0 0 10px;
+          margin: 0 0 6px;
           letter-spacing: -0.02em;
         }
         .bc-title strong {
           background: rgba(0,0,0,0.25);
-          padding: 0 8px;
-          border-radius: 7px;
+          padding: 0 6px;
+          border-radius: 6px;
           font-weight: 700;
         }
         .bc-sub {
-          font-size: 0.9rem;
+          font-size: 0.78rem;
           opacity: 0.92;
           margin: 0;
-          line-height: 1.45;
-          max-width: 36ch;
+          line-height: 1.4;
+          max-width: 32ch;
         }
 
         /* Slide themes */
@@ -245,32 +245,32 @@ export default function BannerCarousel() {
         /* The clock art on the cutoff slide */
         .bc-clock {
           position: relative;
-          width: 120px; height: 120px; border-radius: 999px;
+          width: 82px; height: 82px; border-radius: 999px;
           background: rgba(255,255,255,0.14);
           border: 2px dashed rgba(255,255,255,0.4);
         }
         .bc-clock-mark {
           position: absolute;
           font-family: var(--font-display);
-          font-size: 1.3rem;
+          font-size: 0.95rem;
           font-weight: 700;
           color: #fff;
-          padding: 3px 9px;
+          padding: 2px 7px;
           background: var(--ink);
-          border-radius: 9px;
-          box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+          border-radius: 7px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.25);
         }
-        .bc-mark-6 { top: 4px;  left: 50%; transform: translateX(-50%); }
-        .bc-mark-8 { bottom: 4px; left: 50%; transform: translateX(-50%); }
+        .bc-mark-6 { top: 2px;  left: 50%; transform: translateX(-50%); }
+        .bc-mark-8 { bottom: 2px; left: 50%; transform: translateX(-50%); }
         .bc-clock-core {
           position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-          font-size: 0.78rem; opacity: 0.9; letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
+          font-size: 0.62rem; opacity: 0.9; letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
         }
 
         .bc-art-emoji {
-          font-size: 3.2rem;
+          font-size: 2.2rem;
           line-height: 1;
-          filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
+          filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
         }
 
         /* Dots */
@@ -305,10 +305,13 @@ export default function BannerCarousel() {
 
         @media (min-width: 820px) {
           .bc-arrow { display: inline-flex; }
-          .bc-slide { padding: 32px 36px; min-height: 220px; }
-          .bc-title { font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
-          .bc-art-emoji { font-size: 4.2rem; }
-          .bc-clock { width: 140px; height: 140px; }
+          .bc-slide { padding: 22px 28px; min-height: 150px; border-radius: var(--radius-lg); }
+          .bc-title { font-size: clamp(1.3rem, 2vw, 1.75rem); margin-bottom: 8px; }
+          .bc-sub { font-size: 0.88rem; }
+          .bc-chip { font-size: 0.72rem; padding: 5px 11px; margin-bottom: 10px; }
+          .bc-art-emoji { font-size: 3rem; }
+          .bc-clock { width: 100px; height: 100px; }
+          .bc-clock-mark { font-size: 1.1rem; padding: 3px 9px; }
         }
       `}</style>
     </section>

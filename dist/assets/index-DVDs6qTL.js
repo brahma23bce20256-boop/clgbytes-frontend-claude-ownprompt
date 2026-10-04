@@ -507,13 +507,13 @@ Error generating stack: `+s.message+`
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 18px;
-          padding: 24px 24px;
-          border-radius: var(--radius-lg);
+          gap: 14px;
+          padding: 16px 18px;
+          border-radius: var(--radius-md);
           overflow: hidden;
           color: #fff;
-          min-height: 180px;
-          box-shadow: var(--shadow-md);
+          min-height: 118px;
+          box-shadow: var(--shadow-sm);
         }
         .bc-body { position: relative; z-index: 1; flex: 1; min-width: 0; }
         .bc-art  { position: relative; z-index: 1; flex-shrink: 0; }
@@ -526,37 +526,37 @@ Error generating stack: `+s.message+`
         }
 
         .bc-chip {
-          display: inline-flex; align-items: center; gap: 5px;
-          padding: 5px 11px;
+          display: inline-flex; align-items: center; gap: 4px;
+          padding: 3px 9px;
           border-radius: 999px;
-          font-size: 0.72rem;
+          font-size: 0.66rem;
           font-weight: 700;
           letter-spacing: 0.03em;
-          margin-bottom: 10px;
+          margin-bottom: 7px;
         }
         .bc-chip-dark  { background: rgba(0,0,0,0.25); color: #fff; }
         .bc-chip-light { background: rgba(255,255,255,0.9); color: var(--ink); }
 
         .bc-title {
           font-family: var(--font-display);
-          font-size: clamp(1.4rem, 4.8vw, 2.1rem);
-          line-height: 1.08;
+          font-size: clamp(1.05rem, 4vw, 1.5rem);
+          line-height: 1.1;
           color: #fff;
-          margin: 0 0 10px;
+          margin: 0 0 6px;
           letter-spacing: -0.02em;
         }
         .bc-title strong {
           background: rgba(0,0,0,0.25);
-          padding: 0 8px;
-          border-radius: 7px;
+          padding: 0 6px;
+          border-radius: 6px;
           font-weight: 700;
         }
         .bc-sub {
-          font-size: 0.9rem;
+          font-size: 0.78rem;
           opacity: 0.92;
           margin: 0;
-          line-height: 1.45;
-          max-width: 36ch;
+          line-height: 1.4;
+          max-width: 32ch;
         }
 
         /* Slide themes */
@@ -569,32 +569,32 @@ Error generating stack: `+s.message+`
         /* The clock art on the cutoff slide */
         .bc-clock {
           position: relative;
-          width: 120px; height: 120px; border-radius: 999px;
+          width: 82px; height: 82px; border-radius: 999px;
           background: rgba(255,255,255,0.14);
           border: 2px dashed rgba(255,255,255,0.4);
         }
         .bc-clock-mark {
           position: absolute;
           font-family: var(--font-display);
-          font-size: 1.3rem;
+          font-size: 0.95rem;
           font-weight: 700;
           color: #fff;
-          padding: 3px 9px;
+          padding: 2px 7px;
           background: var(--ink);
-          border-radius: 9px;
-          box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+          border-radius: 7px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.25);
         }
-        .bc-mark-6 { top: 4px;  left: 50%; transform: translateX(-50%); }
-        .bc-mark-8 { bottom: 4px; left: 50%; transform: translateX(-50%); }
+        .bc-mark-6 { top: 2px;  left: 50%; transform: translateX(-50%); }
+        .bc-mark-8 { bottom: 2px; left: 50%; transform: translateX(-50%); }
         .bc-clock-core {
           position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-          font-size: 0.78rem; opacity: 0.9; letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
+          font-size: 0.62rem; opacity: 0.9; letter-spacing: 0.1em; text-transform: uppercase; color: #fff;
         }
 
         .bc-art-emoji {
-          font-size: 3.2rem;
+          font-size: 2.2rem;
           line-height: 1;
-          filter: drop-shadow(0 10px 18px rgba(0,0,0,0.25));
+          filter: drop-shadow(0 6px 12px rgba(0,0,0,0.25));
         }
 
         /* Dots */
@@ -629,10 +629,13 @@ Error generating stack: `+s.message+`
 
         @media (min-width: 820px) {
           .bc-arrow { display: inline-flex; }
-          .bc-slide { padding: 32px 36px; min-height: 220px; }
-          .bc-title { font-size: clamp(1.6rem, 2.6vw, 2.4rem); }
-          .bc-art-emoji { font-size: 4.2rem; }
-          .bc-clock { width: 140px; height: 140px; }
+          .bc-slide { padding: 22px 28px; min-height: 150px; border-radius: var(--radius-lg); }
+          .bc-title { font-size: clamp(1.3rem, 2vw, 1.75rem); margin-bottom: 8px; }
+          .bc-sub { font-size: 0.88rem; }
+          .bc-chip { font-size: 0.72rem; padding: 5px 11px; margin-bottom: 10px; }
+          .bc-art-emoji { font-size: 3rem; }
+          .bc-clock { width: 100px; height: 100px; }
+          .bc-clock-mark { font-size: 1.1rem; padding: 3px 9px; }
         }
       `})]})}function Zg(){const e=L(r=>r.vegFilter),t=L(r=>r.setVegFilter),n=[{k:"all",label:"All"},{k:"veg",label:"Veg"},{k:"nonveg",label:"Non-veg"}];return a.jsxs("div",{className:"veg-toggle",role:"radiogroup","aria-label":"Diet filter",children:[a.jsx("div",{className:"vt-indicator","data-pos":e,"aria-hidden":!0}),n.map(r=>a.jsxs("button",{role:"radio","aria-checked":e===r.k,className:`vt-opt ${e===r.k?"on":""}`,onClick:()=>t(r.k),children:[a.jsx("span",{className:`vt-dot ${r.k}`}),r.label]},r.k)),a.jsx("style",{children:`
         .veg-toggle {
@@ -812,7 +815,7 @@ Error generating stack: `+s.message+`
           color: var(--ink-soft);
           font-weight: 500;
         }
-      `})]})}function Fj(e){return{biryani:"Biryani",mandi:"Mandi",shawarma:"Shawarma","nonveg-starters":"Non-veg starters","veg-starters":"Veg starters"}[e]??e}function _j(e){return e==="vit-ap"?"VIT-AP":e==="srm-ap"?"SRM AP":"Amrita AP"}const Oj=[{id:"biryani",name:"Biryani",emoji:"🍛",blurb:"Dum, hyderabadi, Bombay"},{id:"mandi",name:"Mandis",emoji:"🥘",blurb:"Chicken · Mutton"},{id:"shawarma",name:"Shawarmas",emoji:"🌯",blurb:"Rolls, plates"},{id:"nonveg-starters",name:"Non-veg starters",emoji:"🍗",blurb:"Fry, 65, pepper"},{id:"veg-starters",name:"Veg starters",emoji:"🥗",blurb:"Paneer, mushroom"}],Sn=e=>`https://images.unsplash.com/photo-${e}?auto=format&fit=crop&w=1200&q=80`,Jg=[{id:"bawarchi-mandadam",name:"Bawarchi Mandadam",tagline:"Legendary Hyderabadi dum biryani",location:"Mandadam, Amaravati",distance:{"vit-ap":2.1,"srm-ap":3.4,"amrita-ap":2.8},rating:4.6,reviews:1284,priceForTwo:420,categories:["biryani","nonveg-starters"],veg:"both",cover:Sn("1633945274309-2c47d8c38b60"),accent:"#F26A1F",description:"A Mandadam institution. Slow-cooked dum biryani with aged basmati, fresh herbs and smoky kadhai starters. The dum is sealed with dough and never rushed — every order is scooped straight from the pot.",menu:[{id:"bm-1",name:"Chicken Dum Biryani (Jumbo)",price:220,veg:!1,category:"biryani",bestseller:!0},{id:"bm-2",name:"Mutton Dum Biryani",price:310,veg:!1,category:"biryani",bestseller:!0},{id:"bm-3",name:"Veg Dum Biryani",price:170,veg:!0,category:"biryani"},{id:"bm-4",name:"Egg Biryani",price:160,veg:!1,category:"biryani"},{id:"bm-5",name:"Chicken 65 (Dry)",price:180,veg:!1,category:"nonveg-starters",bestseller:!0},{id:"bm-6",name:"Chicken Lollipop",price:200,veg:!1,category:"nonveg-starters"},{id:"bm-7",name:"Pepper Chicken Fry",price:210,veg:!1,category:"nonveg-starters"}]},{id:"al-madina-mandi",name:"Al Madina Mandi House",tagline:"Authentic Arabian mandis",location:"Nelapadu Road, near Amaravati",distance:{"vit-ap":3.6,"srm-ap":2.9,"amrita-ap":4},rating:4.5,reviews:712,priceForTwo:520,categories:["mandi","shawarma","nonveg-starters"],veg:"nonveg",cover:Sn("1601050690597-df0568f70950"),accent:"#D9550F",description:"Woodfire mandi slow-roasted in a tandoor underground. Served with soft rice, Arabian salad and house-made chutney. Also home to the loaded shawarma plate the campus talks about.",menu:[{id:"am-1",name:"Chicken Mandi (Half)",price:240,veg:!1,category:"mandi",bestseller:!0},{id:"am-2",name:"Chicken Mandi (Full)",price:460,veg:!1,category:"mandi"},{id:"am-3",name:"Mutton Mandi (Half)",price:320,veg:!1,category:"mandi",bestseller:!0},{id:"am-4",name:"Shawarma Roll",price:120,veg:!1,category:"shawarma"},{id:"am-5",name:"Shawarma Plate",price:220,veg:!1,category:"shawarma",bestseller:!0},{id:"am-6",name:"Grilled Chicken Platter",price:280,veg:!1,category:"nonveg-starters"}]},{id:"sri-krishna-tiffins",name:"Sri Krishna Tiffins",tagline:"Pure veg, home-style",location:"Thullur, Amaravati",distance:{"vit-ap":2.6,"srm-ap":4.1,"amrita-ap":3.2},rating:4.4,reviews:540,priceForTwo:220,categories:["biryani","veg-starters"],veg:"veg",cover:Sn("1596797038530-2c107229654b"),accent:"#16A34A",description:"A pure-veg stop that students swear by. Hyderabadi veg biryani with cashew, paneer tikkas off the tawa, and crunchy veg starters that disappear quickly.",menu:[{id:"sk-1",name:"Veg Dum Biryani",price:150,veg:!0,category:"biryani",bestseller:!0},{id:"sk-2",name:"Paneer Biryani",price:190,veg:!0,category:"biryani"},{id:"sk-3",name:"Mushroom Biryani",price:180,veg:!0,category:"biryani"},{id:"sk-4",name:"Paneer Tikka",price:190,veg:!0,category:"veg-starters",bestseller:!0},{id:"sk-5",name:"Gobi 65",price:150,veg:!0,category:"veg-starters"},{id:"sk-6",name:"Mushroom Pepper Fry",price:170,veg:!0,category:"veg-starters"}]},{id:"shawarma-street",name:"Shawarma Street",tagline:"Late-nite rolls, loaded plates",location:"Vaddeswaram Jn.",distance:{"vit-ap":1.8,"srm-ap":2.4,"amrita-ap":2.1},rating:4.3,reviews:980,priceForTwo:260,categories:["shawarma","nonveg-starters","veg-starters"],veg:"both",cover:Sn("1529006557810-274b9b2fc783"),accent:"#F26A1F",description:"Vertical spit, charred edges, garlic mayo pulled straight into the wrap. The hostel favourite — comes with crispy fries and extra sauce every time.",menu:[{id:"ss-1",name:"Chicken Shawarma Roll",price:110,veg:!1,category:"shawarma",bestseller:!0},{id:"ss-2",name:"Chicken Shawarma Plate",price:210,veg:!1,category:"shawarma",bestseller:!0},{id:"ss-3",name:"Paneer Shawarma Roll",price:120,veg:!0,category:"shawarma"},{id:"ss-4",name:"Chicken Peri Peri",price:180,veg:!1,category:"nonveg-starters"},{id:"ss-5",name:"Paneer Peri Peri",price:170,veg:!0,category:"veg-starters"}]},{id:"kadhai-express",name:"Kadhai Express",tagline:"Non-veg starters, biryani on dum",location:"Penumaka Village",distance:{"vit-ap":3.2,"srm-ap":3.8,"amrita-ap":2.9},rating:4.5,reviews:630,priceForTwo:380,categories:["nonveg-starters","biryani"],veg:"nonveg",cover:Sn("1569058242253-92a9c755a0ec"),accent:"#D9550F",description:"Starters-first menu with proper flame-kissed kadhai. The pepper chicken is the student order; the biryani is the sleeper hit.",menu:[{id:"ke-1",name:"Pepper Chicken Dry",price:220,veg:!1,category:"nonveg-starters",bestseller:!0},{id:"ke-2",name:"Chilli Chicken",price:200,veg:!1,category:"nonveg-starters"},{id:"ke-3",name:"Ghee Roast Chicken",price:230,veg:!1,category:"nonveg-starters"},{id:"ke-4",name:"Chicken Biryani",price:210,veg:!1,category:"biryani"},{id:"ke-5",name:"Chicken Lollipop",price:190,veg:!1,category:"nonveg-starters"}]},{id:"green-leaf",name:"Green Leaf",tagline:"Veg starters & more",location:"Mandadam Main Rd.",distance:{"vit-ap":2.4,"srm-ap":3.1,"amrita-ap":2.6},rating:4.2,reviews:410,priceForTwo:240,categories:["veg-starters","biryani"],veg:"veg",cover:Sn("1565299624946-b28f40a0ca4b"),accent:"#16A34A",description:"The reliable veg-only outlet. Fresh paneer, crisp gobi, and warm veg biryani. No surprises — just consistent plates.",menu:[{id:"gl-1",name:"Paneer 65",price:180,veg:!0,category:"veg-starters",bestseller:!0},{id:"gl-2",name:"Veg Manchurian Dry",price:150,veg:!0,category:"veg-starters"},{id:"gl-3",name:"Gobi Manchurian",price:140,veg:!0,category:"veg-starters"},{id:"gl-4",name:"Veg Biryani",price:140,veg:!0,category:"biryani"},{id:"gl-5",name:"Paneer Butter Masala + Roti (2)",price:210,veg:!0,category:"veg-starters"}]}];function Ij(e){return Jg.find(t=>t.id===e)}function Bj(){const e=L(c=>c.query),t=L(c=>c.setQuery),n=L(c=>c.category),r=L(c=>c.setCategory),i=L(c=>c.vegFilter),s=L(c=>c.sortBy),o=L(c=>c.selectedUniversity),l=j.useMemo(()=>{let c=[...Jg];if(n&&(c=c.filter(u=>u.categories.includes(n))),i==="veg"&&(c=c.filter(u=>u.veg==="veg"||u.veg==="both")),i==="nonveg"&&(c=c.filter(u=>u.veg==="nonveg"||u.veg==="both")),e.trim()){const u=e.trim().toLowerCase();c=c.filter(d=>d.name.toLowerCase().includes(u)||d.tagline.toLowerCase().includes(u)||d.menu.some(f=>f.name.toLowerCase().includes(u)))}return s==="rating"&&c.sort((u,d)=>d.rating-u.rating),s==="distance"&&c.sort((u,d)=>u.distance[o]-d.distance[o]),s==="price-low"&&c.sort((u,d)=>u.priceForTwo-d.priceForTwo),s==="price-high"&&c.sort((u,d)=>d.priceForTwo-u.priceForTwo),c},[n,i,e,s,o]);return a.jsxs("main",{className:"landing",children:[a.jsxs("section",{className:"hero",children:[a.jsxs("div",{className:"container hero-inner",children:[a.jsx("div",{className:"hero-badges rise",children:a.jsxs("span",{className:"hb",children:[a.jsx(yc,{size:14})," We're back · daily orders, no breaks"]})}),a.jsxs("h1",{className:"hero-title rise",children:["Campus food, ",a.jsx("em",{children:"trusted daily"}),".",a.jsx("br",{}),"Order by ",a.jsx("span",{className:"pill-6pm",children:"6 pm"}),", we're at your ",a.jsx("span",{className:"pill-gate",children:"main gate by 8 pm"}),"."]}),a.jsx("p",{className:"hero-sub rise",children:"One tap from menu → main gate. No surge, no gimmicks — menu prices + a flat delivery fee. Built by VIT-AP students for VIT-AP, SRM AP and Amrita AP."}),a.jsx("div",{className:"hero-address rise",children:a.jsx(km,{})}),a.jsxs("div",{className:"hero-search rise",children:[a.jsx("div",{className:"hs-icon",children:a.jsx(gm,{size:18})}),a.jsx("input",{value:e,onChange:c=>t(c.target.value),placeholder:"Search biryani, mandi, shawarma, or a hotel…"}),a.jsx("button",{className:"hs-cta",onClick:()=>{var c;return(c=document.getElementById("hotels-grid"))==null?void 0:c.scrollIntoView({behavior:"smooth"})},children:"Find food"})]}),a.jsxs("div",{className:"hero-trust rise",children:[a.jsxs("span",{children:[a.jsx(Gx,{size:14})," Hostel-tested"]}),a.jsxs("span",{children:[a.jsx(qx,{size:14})," ~45 min · door-to-gate"]}),a.jsxs("span",{children:[a.jsx(mm,{size:14})," ₹30 off above ₹499"]})]})]}),a.jsx("div",{className:"hero-decor","aria-hidden":!0})]}),a.jsx("div",{className:"container",children:a.jsx(Lj,{})}),a.jsxs("section",{className:"container",children:[a.jsx("div",{className:"section-title",children:a.jsxs("h2",{children:["What are we eating today? ",a.jsx("small",{children:"Pick a vibe — we'll show the hotels that do it best."})]})}),a.jsxs("div",{className:"cat-grid",children:[a.jsxs("button",{className:`cat-tile ${n===null?"active":""}`,onClick:()=>r(null),children:[a.jsx("span",{className:"cat-emoji",children:"🍽️"}),a.jsx("div",{className:"cat-name",children:"All"}),a.jsx("div",{className:"cat-sub",children:"Everything on the menu"})]}),Oj.map(c=>a.jsxs("button",{className:`cat-tile ${n===c.id?"active":""}`,onClick:()=>r(n===c.id?null:c.id),children:[a.jsx("span",{className:"cat-emoji",children:c.emoji}),a.jsx("div",{className:"cat-name",children:c.name}),a.jsx("div",{className:"cat-sub",children:c.blurb})]},c.id))]})]}),a.jsxs("section",{className:"container",id:"hotels-grid",children:[a.jsx(Dj,{}),a.jsx("div",{className:"section-title",children:a.jsxs("h2",{children:["Hotels around ",a.jsx("em",{children:Uj(o)}),a.jsxs("small",{children:[l.length," place",l.length===1?"":"s"," match your filters"]})]})}),l.length===0?a.jsxs("div",{className:"empty-card",children:[a.jsx("div",{style:{fontSize:44},children:"🍽️"}),a.jsx("h3",{style:{marginTop:8},children:"No hotels match these filters."}),a.jsx("p",{className:"mute",children:"Clear a filter and try again — we promise there's good food here."})]}):a.jsx("div",{className:"hotels-grid",children:l.map((c,u)=>a.jsx(Vj,{hotel:c,index:u},c.id))})]}),a.jsx("section",{className:"container about-preview",children:a.jsxs("div",{className:"about-card",children:[a.jsxs("div",{className:"about-left",children:[a.jsx("span",{className:"chip",style:{background:"var(--brand-orange-soft)",color:"var(--brand-orange-deep)",borderColor:"transparent"},children:"Our story · in short"}),a.jsx("h2",{children:"Day 1 was ₹30. Day 5 was ₹1,000."}),a.jsxs("p",{children:["We're ",a.jsx("strong",{children:"Clgbytes"})," — a crew of VIT-AP students who got tired of paying the hostel-food premium. Started on a WhatsApp group, built this website overnight after a crash, and now we're back with daily orders. One honest promise: menu prices + a tiny delivery fee. That's it."]}),a.jsxs("p",{className:"about-apology",children:[a.jsx("strong",{children:"A word on last time."})," Some internal disputes slowed us down and Clgbytes didn't run the way it should have. We're sorry about that. ",a.jsx("strong",{children:"From today, orders are open every single day"})," — no breaks, no gaps. Only trust."]}),a.jsxs(te,{to:"/about",className:"btn btn-dark",style:{marginTop:20},children:["Read the full story ",a.jsx(ki,{size:16})]})]}),a.jsxs("div",{className:"about-right",children:[a.jsxs("div",{className:"about-stat",children:[a.jsx("div",{className:"stat-num",children:"3"}),a.jsx("div",{className:"stat-label",children:"Universities we serve"})]}),a.jsxs("div",{className:"about-stat",children:[a.jsx("div",{className:"stat-num",children:"6+"}),a.jsx("div",{className:"stat-label",children:"Trusted hotels on-boarded"})]}),a.jsxs("div",{className:"about-stat",children:[a.jsx("div",{className:"stat-num",children:"₹15"}),a.jsx("div",{className:"stat-label",children:"Flat delivery, no surprises"})]}),a.jsxs("div",{className:"about-stat",children:[a.jsx("div",{className:"stat-num",children:"Daily"}),a.jsx("div",{className:"stat-label",children:"We're open — 1 run / evening"})]})]})]})}),a.jsx("style",{children:`
+      `})]})}function Fj(e){return{biryani:"Biryani",mandi:"Mandi",shawarma:"Shawarma","nonveg-starters":"Non-veg starters","veg-starters":"Veg starters"}[e]??e}function _j(e){return e==="vit-ap"?"VIT-AP":e==="srm-ap"?"SRM AP":"Amrita AP"}const Oj=[{id:"biryani",name:"Biryani",emoji:"🍛",blurb:"Dum, hyderabadi, Bombay"},{id:"mandi",name:"Mandis",emoji:"🥘",blurb:"Chicken · Mutton"},{id:"shawarma",name:"Shawarmas",emoji:"🌯",blurb:"Rolls, plates"},{id:"nonveg-starters",name:"Non-veg starters",emoji:"🍗",blurb:"Fry, 65, pepper"},{id:"veg-starters",name:"Veg starters",emoji:"🥗",blurb:"Paneer, mushroom"}],Sn=e=>`https://images.unsplash.com/photo-${e}?auto=format&fit=crop&w=1200&q=80`,Jg=[{id:"bawarchi-mandadam",name:"Bawarchi Mandadam",tagline:"Legendary Hyderabadi dum biryani",location:"Mandadam, Amaravati",distance:{"vit-ap":2.1,"srm-ap":3.4,"amrita-ap":2.8},rating:4.6,reviews:1284,priceForTwo:420,categories:["biryani","nonveg-starters"],veg:"both",cover:Sn("1633945274309-2c47d8c38b60"),accent:"#F26A1F",description:"A Mandadam institution. Slow-cooked dum biryani with aged basmati, fresh herbs and smoky kadhai starters. The dum is sealed with dough and never rushed — every order is scooped straight from the pot.",menu:[{id:"bm-1",name:"Chicken Dum Biryani (Jumbo)",price:220,veg:!1,category:"biryani",bestseller:!0},{id:"bm-2",name:"Mutton Dum Biryani",price:310,veg:!1,category:"biryani",bestseller:!0},{id:"bm-3",name:"Veg Dum Biryani",price:170,veg:!0,category:"biryani"},{id:"bm-4",name:"Egg Biryani",price:160,veg:!1,category:"biryani"},{id:"bm-5",name:"Chicken 65 (Dry)",price:180,veg:!1,category:"nonveg-starters",bestseller:!0},{id:"bm-6",name:"Chicken Lollipop",price:200,veg:!1,category:"nonveg-starters"},{id:"bm-7",name:"Pepper Chicken Fry",price:210,veg:!1,category:"nonveg-starters"}]},{id:"al-madina-mandi",name:"Al Madina Mandi House",tagline:"Authentic Arabian mandis",location:"Nelapadu Road, near Amaravati",distance:{"vit-ap":3.6,"srm-ap":2.9,"amrita-ap":4},rating:4.5,reviews:712,priceForTwo:520,categories:["mandi","shawarma","nonveg-starters"],veg:"nonveg",cover:Sn("1601050690597-df0568f70950"),accent:"#D9550F",description:"Woodfire mandi slow-roasted in a tandoor underground. Served with soft rice, Arabian salad and house-made chutney. Also home to the loaded shawarma plate the campus talks about.",menu:[{id:"am-1",name:"Chicken Mandi (Half)",price:240,veg:!1,category:"mandi",bestseller:!0},{id:"am-2",name:"Chicken Mandi (Full)",price:460,veg:!1,category:"mandi"},{id:"am-3",name:"Mutton Mandi (Half)",price:320,veg:!1,category:"mandi",bestseller:!0},{id:"am-4",name:"Shawarma Roll",price:120,veg:!1,category:"shawarma"},{id:"am-5",name:"Shawarma Plate",price:220,veg:!1,category:"shawarma",bestseller:!0},{id:"am-6",name:"Grilled Chicken Platter",price:280,veg:!1,category:"nonveg-starters"}]},{id:"sri-krishna-tiffins",name:"Sri Krishna Tiffins",tagline:"Pure veg, home-style",location:"Thullur, Amaravati",distance:{"vit-ap":2.6,"srm-ap":4.1,"amrita-ap":3.2},rating:4.4,reviews:540,priceForTwo:220,categories:["biryani","veg-starters"],veg:"veg",cover:Sn("1596797038530-2c107229654b"),accent:"#16A34A",description:"A pure-veg stop that students swear by. Hyderabadi veg biryani with cashew, paneer tikkas off the tawa, and crunchy veg starters that disappear quickly.",menu:[{id:"sk-1",name:"Veg Dum Biryani",price:150,veg:!0,category:"biryani",bestseller:!0},{id:"sk-2",name:"Paneer Biryani",price:190,veg:!0,category:"biryani"},{id:"sk-3",name:"Mushroom Biryani",price:180,veg:!0,category:"biryani"},{id:"sk-4",name:"Paneer Tikka",price:190,veg:!0,category:"veg-starters",bestseller:!0},{id:"sk-5",name:"Gobi 65",price:150,veg:!0,category:"veg-starters"},{id:"sk-6",name:"Mushroom Pepper Fry",price:170,veg:!0,category:"veg-starters"}]},{id:"shawarma-street",name:"Shawarma Street",tagline:"Late-nite rolls, loaded plates",location:"Vaddeswaram Jn.",distance:{"vit-ap":1.8,"srm-ap":2.4,"amrita-ap":2.1},rating:4.3,reviews:980,priceForTwo:260,categories:["shawarma","nonveg-starters","veg-starters"],veg:"both",cover:Sn("1529006557810-274b9b2fc783"),accent:"#F26A1F",description:"Vertical spit, charred edges, garlic mayo pulled straight into the wrap. The hostel favourite — comes with crispy fries and extra sauce every time.",menu:[{id:"ss-1",name:"Chicken Shawarma Roll",price:110,veg:!1,category:"shawarma",bestseller:!0},{id:"ss-2",name:"Chicken Shawarma Plate",price:210,veg:!1,category:"shawarma",bestseller:!0},{id:"ss-3",name:"Paneer Shawarma Roll",price:120,veg:!0,category:"shawarma"},{id:"ss-4",name:"Chicken Peri Peri",price:180,veg:!1,category:"nonveg-starters"},{id:"ss-5",name:"Paneer Peri Peri",price:170,veg:!0,category:"veg-starters"}]},{id:"kadhai-express",name:"Kadhai Express",tagline:"Non-veg starters, biryani on dum",location:"Penumaka Village",distance:{"vit-ap":3.2,"srm-ap":3.8,"amrita-ap":2.9},rating:4.5,reviews:630,priceForTwo:380,categories:["nonveg-starters","biryani"],veg:"nonveg",cover:Sn("1569058242253-92a9c755a0ec"),accent:"#D9550F",description:"Starters-first menu with proper flame-kissed kadhai. The pepper chicken is the student order; the biryani is the sleeper hit.",menu:[{id:"ke-1",name:"Pepper Chicken Dry",price:220,veg:!1,category:"nonveg-starters",bestseller:!0},{id:"ke-2",name:"Chilli Chicken",price:200,veg:!1,category:"nonveg-starters"},{id:"ke-3",name:"Ghee Roast Chicken",price:230,veg:!1,category:"nonveg-starters"},{id:"ke-4",name:"Chicken Biryani",price:210,veg:!1,category:"biryani"},{id:"ke-5",name:"Chicken Lollipop",price:190,veg:!1,category:"nonveg-starters"}]},{id:"green-leaf",name:"Green Leaf",tagline:"Veg starters & more",location:"Mandadam Main Rd.",distance:{"vit-ap":2.4,"srm-ap":3.1,"amrita-ap":2.6},rating:4.2,reviews:410,priceForTwo:240,categories:["veg-starters","biryani"],veg:"veg",cover:Sn("1565299624946-b28f40a0ca4b"),accent:"#16A34A",description:"The reliable veg-only outlet. Fresh paneer, crisp gobi, and warm veg biryani. No surprises — just consistent plates.",menu:[{id:"gl-1",name:"Paneer 65",price:180,veg:!0,category:"veg-starters",bestseller:!0},{id:"gl-2",name:"Veg Manchurian Dry",price:150,veg:!0,category:"veg-starters"},{id:"gl-3",name:"Gobi Manchurian",price:140,veg:!0,category:"veg-starters"},{id:"gl-4",name:"Veg Biryani",price:140,veg:!0,category:"biryani"},{id:"gl-5",name:"Paneer Butter Masala + Roti (2)",price:210,veg:!0,category:"veg-starters"}]}];function Ij(e){return Jg.find(t=>t.id===e)}function Bj(){const e=L(c=>c.query),t=L(c=>c.setQuery),n=L(c=>c.category),r=L(c=>c.setCategory),i=L(c=>c.vegFilter),s=L(c=>c.sortBy),o=L(c=>c.selectedUniversity),l=j.useMemo(()=>{let c=[...Jg];if(n&&(c=c.filter(u=>u.categories.includes(n))),i==="veg"&&(c=c.filter(u=>u.veg==="veg"||u.veg==="both")),i==="nonveg"&&(c=c.filter(u=>u.veg==="nonveg"||u.veg==="both")),e.trim()){const u=e.trim().toLowerCase();c=c.filter(d=>d.name.toLowerCase().includes(u)||d.tagline.toLowerCase().includes(u)||d.menu.some(f=>f.name.toLowerCase().includes(u)))}return s==="rating"&&c.sort((u,d)=>d.rating-u.rating),s==="distance"&&c.sort((u,d)=>u.distance[o]-d.distance[o]),s==="price-low"&&c.sort((u,d)=>u.priceForTwo-d.priceForTwo),s==="price-high"&&c.sort((u,d)=>d.priceForTwo-u.priceForTwo),c},[n,i,e,s,o]);return a.jsxs("main",{className:"landing",children:[a.jsxs("section",{className:"hero",children:[a.jsxs("div",{className:"container hero-inner",children:[a.jsx("div",{className:"hero-badges rise",children:a.jsxs("span",{className:"hb",children:[a.jsx(yc,{size:14})," We're back · daily orders, no breaks"]})}),a.jsxs("h1",{className:"hero-title rise",children:["Campus food, ",a.jsx("em",{children:"trusted daily"}),".",a.jsx("br",{}),"Order by ",a.jsx("span",{className:"pill-6pm",children:"6 pm"}),", we're at your ",a.jsx("span",{className:"pill-gate",children:"main gate by 8 pm"}),"."]}),a.jsx("p",{className:"hero-sub rise",children:"One tap from menu → main gate. No surge, no gimmicks — menu prices + a flat delivery fee. Built by VIT-AP students for VIT-AP, SRM AP and Amrita AP."}),a.jsx("div",{className:"hero-address rise",children:a.jsx(km,{})}),a.jsxs("div",{className:"hero-search rise",children:[a.jsx("div",{className:"hs-icon",children:a.jsx(gm,{size:18})}),a.jsx("input",{value:e,onChange:c=>t(c.target.value),placeholder:"Search biryani, mandi, shawarma, or a hotel…"}),a.jsx("button",{className:"hs-cta",onClick:()=>{var c;return(c=document.getElementById("hotels-grid"))==null?void 0:c.scrollIntoView({behavior:"smooth"})},children:"Find food"})]}),a.jsxs("div",{className:"hero-trust rise",children:[a.jsxs("span",{children:[a.jsx(Gx,{size:14})," Hostel-tested"]}),a.jsxs("span",{children:[a.jsx(qx,{size:14})," ~45 min · door-to-gate"]}),a.jsxs("span",{children:[a.jsx(mm,{size:14})," ₹30 off above ₹499"]})]})]}),a.jsx("div",{className:"hero-decor","aria-hidden":!0})]}),a.jsx("div",{className:"container",children:a.jsx(Lj,{})}),a.jsxs("section",{className:"container cats-section",children:[a.jsx("div",{className:"section-title",children:a.jsx("h2",{children:"What are we eating today?"})}),a.jsxs("div",{className:"cat-rail",role:"tablist","aria-label":"Food categories",children:[a.jsx("button",{role:"tab","aria-selected":n===null,className:`cat-chip ${n===null?"active":""}`,onClick:()=>r(null),children:"All"}),Oj.map(c=>a.jsx("button",{role:"tab","aria-selected":n===c.id,className:`cat-chip ${n===c.id?"active":""}`,onClick:()=>r(n===c.id?null:c.id),children:c.name},c.id))]})]}),a.jsxs("section",{className:"container",id:"hotels-grid",children:[a.jsx(Dj,{}),a.jsx("div",{className:"section-title",children:a.jsxs("h2",{children:["Hotels around ",a.jsx("em",{children:Uj(o)}),a.jsxs("small",{children:[l.length," place",l.length===1?"":"s"," match your filters"]})]})}),l.length===0?a.jsxs("div",{className:"empty-card",children:[a.jsx("div",{style:{fontSize:44},children:"🍽️"}),a.jsx("h3",{style:{marginTop:8},children:"No hotels match these filters."}),a.jsx("p",{className:"mute",children:"Clear a filter and try again — we promise there's good food here."})]}):a.jsx("div",{className:"hotels-grid",children:l.map((c,u)=>a.jsx(Vj,{hotel:c,index:u},c.id))})]}),a.jsxs("section",{className:"container about-mini",children:[a.jsx("h2",{children:"About us"}),a.jsxs("p",{children:["We're ",a.jsx("strong",{children:"Clgbytes"})," — a crew of VIT-AP students who got tired of the hostel-food premium, so we built this. Menu prices, a tiny delivery fee, and one honest run every evening. We stumbled last time; this time we're back daily — no breaks, only trust."]}),a.jsxs(te,{to:"/about",className:"btn btn-dark about-mini-cta",children:["Read our full story ",a.jsx(ki,{size:16})]})]}),a.jsx("style",{children:`
         .landing { padding-top: 20px; }
 
         /* --- HERO --- */
@@ -978,44 +981,47 @@ Error generating stack: `+s.message+`
         .banner-mini h3 { font-family: var(--font-sans); font-weight: 700; font-size: 1rem; }
         .banner-mini p { margin: 2px 0 0; font-size: 0.82rem; }
 
-        /* --- CATEGORIES --- */
-        .cat-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-          gap: 12px;
-          margin-top: 10px;
+        /* --- CATEGORIES: horizontal swipe rail, text-only --- */
+        .cats-section .section-title { margin-bottom: 12px; }
+        .cat-rail {
+          display: flex;
+          gap: 8px;
+          overflow-x: auto;
+          scroll-snap-type: x proximity;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          padding: 4px 0 8px;
+          /* bleed to screen edges so chips can scroll flush */
+          margin-left: calc(-1 * clamp(16px, 3vw, 32px));
+          margin-right: calc(-1 * clamp(16px, 3vw, 32px));
+          padding-left: clamp(16px, 3vw, 32px);
+          padding-right: clamp(16px, 3vw, 32px);
+          mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+          -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
         }
-        .cat-tile {
-          text-align: left;
-          padding: 18px;
+        .cat-rail::-webkit-scrollbar { display: none; }
+        .cat-chip {
+          flex-shrink: 0;
+          scroll-snap-align: start;
+          padding: 9px 18px;
           background: var(--paper);
-          border: 1px solid var(--line);
-          border-radius: var(--radius-md);
-          transition: all .2s;
-          box-shadow: var(--shadow-sm);
+          border: 1px solid var(--line-strong);
+          border-radius: 999px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          color: var(--ink-soft);
+          white-space: nowrap;
+          transition: all .18s;
         }
-        .cat-tile:hover { transform: translateY(-3px); border-color: var(--brand-orange); box-shadow: var(--shadow-md); }
-        .cat-tile.active {
+        .cat-chip:hover { border-color: var(--ink); color: var(--ink); }
+        .cat-chip.active {
           background: var(--brand-orange);
           color: #fff;
           border-color: var(--brand-orange-deep);
-          box-shadow: 0 16px 36px -14px rgba(242,106,31,0.5);
+          box-shadow: 0 8px 20px -10px rgba(242,106,31,0.6);
         }
-        .cat-tile.active .cat-sub { color: rgba(255,255,255,0.85); }
-        .cat-emoji { font-size: 2rem; display: block; margin-bottom: 8px; }
-        .cat-name { font-weight: 700; font-size: 1.05rem; }
-        .cat-sub { font-size: 0.78rem; color: var(--ink-mute); margin-top: 4px; }
-
-        /* Mobile: 2-up tight tiles so they fit without feeling cramped */
         @media (max-width: 600px) {
-          .cat-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-          }
-          .cat-tile { padding: 14px; border-radius: var(--radius-sm); }
-          .cat-emoji { font-size: 1.6rem; margin-bottom: 6px; }
-          .cat-name { font-size: 0.95rem; }
-          .cat-sub { font-size: 0.72rem; }
+          .cat-chip { padding: 8px 14px; font-size: 0.85rem; }
         }
 
         /* --- HOTELS --- */
@@ -1032,62 +1038,28 @@ Error generating stack: `+s.message+`
           border-radius: var(--radius-md);
         }
 
-        /* --- ABOUT PREVIEW --- */
-        .about-preview { margin-top: 60px; }
-        .about-card {
-          display: grid;
-          grid-template-columns: 1.5fr 1fr;
-          background: var(--ink);
-          color: #d7d2cf;
-          border-radius: var(--radius-xl);
-          padding: 44px;
-          gap: 40px;
-          position: relative;
-          overflow: hidden;
-          box-shadow: var(--shadow-lg);
+        /* --- ABOUT PREVIEW: minimal, borderless --- */
+        .about-mini {
+          margin-top: 54px;
+          max-width: 680px;
         }
-        .about-card::before {
-          content: ''; position: absolute; inset: 0;
-          background:
-            radial-gradient(circle at 100% 0%, rgba(242,106,31,0.18), transparent 40%),
-            radial-gradient(circle at 0% 100%, rgba(242,106,31,0.08), transparent 50%);
-          pointer-events: none;
+        .about-mini h2 {
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          margin-bottom: 14px;
         }
-        .about-left { position: relative; z-index: 1; }
-        .about-left h2 { color: #fff; margin: 14px 0 16px; font-size: clamp(1.6rem, 3vw, 2.4rem); }
-        .about-left p { font-size: 0.98rem; line-height: 1.65; margin: 0 0 14px; color: #cbc6c3; max-width: 560px; }
-        .about-left strong { color: #fff; font-weight: 600; }
-        .about-apology {
-          padding: 16px 20px;
-          background: rgba(242,106,31,0.14);
-          border-left: 3px solid var(--brand-orange);
-          border-radius: 10px;
+        .about-mini p {
+          font-size: 1rem;
+          line-height: 1.65;
+          color: var(--ink-soft);
+          margin: 0 0 20px;
+        }
+        .about-mini p strong { color: var(--ink); font-weight: 600; }
+        .about-mini-cta { }
+        @media (max-width: 600px) {
+          .about-mini { margin-top: 36px; }
+          .about-mini p { font-size: 0.95rem; }
         }
 
-        .about-right {
-          position: relative; z-index: 1;
-          display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-          align-content: start;
-        }
-        .about-stat {
-          background: rgba(255,255,255,0.06);
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: var(--radius-md);
-          padding: 20px 18px;
-        }
-        .stat-num {
-          font-family: var(--font-display);
-          font-size: 2.2rem;
-          font-weight: 700;
-          color: var(--brand-orange-glow);
-          line-height: 1;
-        }
-        .stat-label { font-size: 0.78rem; color: #cbc6c3; margin-top: 6px; line-height: 1.3; }
-
-        @media (max-width: 900px) {
-          .about-card { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
-          .about-right { grid-template-columns: 1fr 1fr; }
-        }
         @media (max-width: 600px) {
           .hero { padding: 20px 0 10px; }
           .hero-badges { margin-bottom: 14px; }
@@ -1100,14 +1072,6 @@ Error generating stack: `+s.message+`
           .section-title h2 { font-size: 1.3rem; }
           .section-title h2 small { font-size: 0.78rem; }
           .hotels-grid { gap: 14px; }
-          .about-preview { margin-top: 40px; }
-          .about-card { padding: 24px; border-radius: var(--radius-lg); }
-          .about-left h2 { font-size: 1.5rem; }
-          .about-left p { font-size: 0.92rem; line-height: 1.6; }
-          .about-apology { padding: 14px 16px; font-size: 0.9rem; }
-          .about-right { gap: 10px; }
-          .about-stat { padding: 16px 14px; }
-          .stat-num { font-size: 1.8rem; }
         }
       `})]})}function Uj(e){return e==="vit-ap"?"VIT-AP":e==="srm-ap"?"SRM AP":"Amrita AP"}function $j(){const{hotelId:e}=sm(),t=dr(),n=e?Ij(e):null,r=L(g=>g.selectedUniversity),i=L(g=>g.cart),s=L(g=>g.vegFilter),o=L(g=>g.addToCart),l=L(g=>g.decrement),[c,u]=j.useState(""),d=g=>{var w;return((w=i.find(h=>h.item.id===g))==null?void 0:w.qty)??0},f=j.useMemo(()=>{if(!n)return[];let g=n.menu;return s==="veg"&&(g=g.filter(w=>w.veg)),s==="nonveg"&&(g=g.filter(w=>!w.veg)),c.trim()&&(g=g.filter(w=>w.name.toLowerCase().includes(c.toLowerCase()))),g},[n,s,c]);if(!n)return a.jsxs("main",{className:"page container",children:[a.jsx("h2",{children:"Hotel not found"}),a.jsx(te,{to:"/",className:"btn btn-ghost",style:{marginTop:14},children:"← Back home"})]});const p=n.distance[r],y=Math.max(20,Math.round(p*10+15)),x=f.reduce((g,w)=>((g[w.category]=g[w.category]||[]).push(w),g),{});return a.jsxs("main",{className:"menu-page",children:[a.jsxs("section",{className:"menu-hero",children:[a.jsxs("div",{className:"menu-hero-bg",children:[a.jsx("img",{src:n.cover,alt:""}),a.jsx("div",{className:"menu-hero-shade"})]}),a.jsx("div",{className:"container menu-hero-inner",children:a.jsxs("button",{className:"menu-back",onClick:()=>t(-1),children:[a.jsx(Lx,{size:16})," Back"]})})]}),a.jsx("section",{className:"container menu-head-wrap",children:a.jsxs("div",{className:"menu-head card",children:[a.jsxs("div",{className:"menu-head-top",children:[a.jsxs("div",{children:[a.jsx("div",{className:"menu-cuisines",children:n.tagline}),a.jsx("h1",{className:"menu-name",children:n.name}),a.jsxs("div",{className:"menu-location",children:[a.jsx(Ut,{size:14})," ",n.location," · ",a.jsxs("strong",{children:[p," km"]})," from ",Vf(r)]})]}),a.jsxs("div",{className:"menu-rating",children:[a.jsxs("div",{className:"mr-pill",children:[a.jsx(xm,{size:14,fill:"currentColor",strokeWidth:0})," ",n.rating.toFixed(1)]}),a.jsxs("div",{className:"mr-sub",children:[n.reviews.toLocaleString(),"+ ratings"]})]})]}),a.jsxs("div",{className:"menu-info-row",children:[a.jsxs("div",{className:"mi-card",children:[a.jsx(ji,{size:16}),a.jsxs("div",{children:[a.jsx("div",{className:"mi-top",children:"Delivery window"}),a.jsxs("div",{className:"mi-sub",children:[a.jsx("strong",{children:"Order by 6 pm"})," · delivered by ",a.jsx("strong",{children:"8 pm"})]})]})]}),a.jsxs("div",{className:"mi-card",children:[a.jsx(Ox,{size:16}),a.jsxs("div",{children:[a.jsx("div",{className:"mi-top",children:"Prep time"}),a.jsxs("div",{className:"mi-sub",children:[y,"–",y+10," min from the kitchen"]})]})]}),a.jsxs("div",{className:"mi-card",children:[a.jsx(Ut,{size:16}),a.jsxs("div",{children:[a.jsx("div",{className:"mi-top",children:"Pickup point"}),a.jsxs("div",{className:"mi-sub",children:["We hand over at your ",a.jsx("strong",{children:"main gate"}),", ",Vf(r)]})]})]})]})]})}),a.jsxs("section",{className:"container menu-body",children:[a.jsxs("div",{className:"menu-controls",children:[a.jsxs("div",{className:"menu-search",children:[a.jsx(gm,{size:16}),a.jsx("input",{value:c,onChange:g=>u(g.target.value),placeholder:"Search this menu…"})]}),a.jsx(Zg,{})]}),Object.entries(x).length===0?a.jsxs("div",{className:"empty-card",style:{padding:40,textAlign:"center"},children:[a.jsx("div",{style:{fontSize:36},children:"🍽️"}),a.jsx("p",{className:"mute",children:"No items match these filters."})]}):Object.entries(x).map(([g,w])=>a.jsxs("div",{className:"menu-section",children:[a.jsxs("div",{className:"menu-section-head",children:[a.jsx("h2",{children:Wj(g)}),a.jsxs("span",{className:"mute text-sm",children:[w.length," items"]})]}),a.jsx("div",{className:"menu-items",children:w.map(h=>{const m=d(h.id);return a.jsxs("div",{className:"menu-item",children:[a.jsxs("div",{className:"mi-left",children:[a.jsx("span",{className:`vn-mark ${h.veg?"":"nonveg"}`}),a.jsxs("div",{className:"mi-info",children:[a.jsxs("div",{className:"mi-name",children:[h.name,h.bestseller&&a.jsx("span",{className:"mi-tag",children:"★ Bestseller"})]}),a.jsxs("div",{className:"mi-price",children:["₹",h.price]})]})]}),a.jsx("div",{className:"mi-right",children:m===0?a.jsxs("button",{className:"mi-add",onClick:()=>o(h,n.id,n.name),children:[a.jsx(nl,{size:16})," ADD"]}):a.jsxs("div",{className:"mi-qty",children:[a.jsx("button",{onClick:()=>l(h.id),children:a.jsx(pm,{size:14})}),a.jsx("span",{children:m}),a.jsx("button",{onClick:()=>o(h,n.id,n.name),children:a.jsx(nl,{size:14})})]})})]},h.id)})})]},g)),a.jsxs("div",{className:"hotel-desc",children:[a.jsxs("h3",{children:["About ",n.name]}),a.jsx("p",{children:n.description}),a.jsxs("div",{className:"hotel-desc-foot",children:[a.jsx("span",{className:"chip",children:"Open today"}),a.jsx("span",{className:"chip",children:"Trusted by Clgbytes"}),a.jsx("span",{className:"chip",children:"Hand-off at main gate"})]})]})]}),a.jsx("style",{children:`
         .menu-page { padding-bottom: 120px; }

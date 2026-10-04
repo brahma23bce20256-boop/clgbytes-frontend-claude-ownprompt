@@ -88,29 +88,29 @@ export default function LandingPage() {
         <BannerCarousel />
       </div>
 
-      {/* ============ CATEGORIES ============ */}
-      <section className="container">
+      {/* ============ CATEGORIES — horizontal swipe rail ============ */}
+      <section className="container cats-section">
         <div className="section-title">
-          <h2>What are we eating today? <small>Pick a vibe — we'll show the hotels that do it best.</small></h2>
+          <h2>What are we eating today?</h2>
         </div>
-        <div className="cat-grid">
+        <div className="cat-rail" role="tablist" aria-label="Food categories">
           <button
-            className={`cat-tile ${category === null ? 'active' : ''}`}
+            role="tab"
+            aria-selected={category === null}
+            className={`cat-chip ${category === null ? 'active' : ''}`}
             onClick={() => setCategory(null)}
           >
-            <span className="cat-emoji">🍽️</span>
-            <div className="cat-name">All</div>
-            <div className="cat-sub">Everything on the menu</div>
+            All
           </button>
           {CATEGORIES.map((c) => (
             <button
               key={c.id}
-              className={`cat-tile ${category === c.id ? 'active' : ''}`}
+              role="tab"
+              aria-selected={category === c.id}
+              className={`cat-chip ${category === c.id ? 'active' : ''}`}
               onClick={() => setCategory(category === c.id ? null : c.id)}
             >
-              <span className="cat-emoji">{c.emoji}</span>
-              <div className="cat-name">{c.name}</div>
-              <div className="cat-sub">{c.blurb}</div>
+              {c.name}
             </button>
           ))}
         </div>
@@ -139,49 +139,17 @@ export default function LandingPage() {
         )}
       </section>
 
-      {/* ============ ABOUT PREVIEW ============ */}
-      <section className="container about-preview">
-        <div className="about-card">
-          <div className="about-left">
-            <span className="chip" style={{ background: 'var(--brand-orange-soft)', color: 'var(--brand-orange-deep)', borderColor: 'transparent' }}>
-              Our story · in short
-            </span>
-            <h2>Day 1 was ₹30. Day 5 was ₹1,000.</h2>
-            <p>
-              We're <strong>Clgbytes</strong> — a crew of VIT-AP students who got tired of paying the hostel-food
-              premium. Started on a WhatsApp group, built this website overnight after a crash, and now we're back
-              with daily orders. One honest promise: menu prices + a tiny delivery fee. That's it.
-            </p>
-            <p className="about-apology">
-              <strong>A word on last time.</strong> Some internal disputes slowed us down and Clgbytes didn't run
-              the way it should have. We're sorry about that. <strong>From today, orders are open every single day</strong> —
-              no breaks, no gaps. Only trust.
-            </p>
-
-            <Link to="/about" className="btn btn-dark" style={{ marginTop: 20 }}>
-              Read the full story <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="about-right">
-            <div className="about-stat">
-              <div className="stat-num">3</div>
-              <div className="stat-label">Universities we serve</div>
-            </div>
-            <div className="about-stat">
-              <div className="stat-num">6+</div>
-              <div className="stat-label">Trusted hotels on-boarded</div>
-            </div>
-            <div className="about-stat">
-              <div className="stat-num">₹15</div>
-              <div className="stat-label">Flat delivery, no surprises</div>
-            </div>
-            <div className="about-stat">
-              <div className="stat-num">Daily</div>
-              <div className="stat-label">We're open — 1 run / evening</div>
-            </div>
-          </div>
-        </div>
+      {/* ============ ABOUT PREVIEW — minimal ============ */}
+      <section className="container about-mini">
+        <h2>About us</h2>
+        <p>
+          We're <strong>Clgbytes</strong> — a crew of VIT-AP students who got tired of the hostel-food premium,
+          so we built this. Menu prices, a tiny delivery fee, and one honest run every evening. We stumbled last
+          time; this time we're back daily — no breaks, only trust.
+        </p>
+        <Link to="/about" className="btn btn-dark about-mini-cta">
+          Read our full story <ArrowRight size={16} />
+        </Link>
       </section>
 
       <style>{`
@@ -350,44 +318,47 @@ export default function LandingPage() {
         .banner-mini h3 { font-family: var(--font-sans); font-weight: 700; font-size: 1rem; }
         .banner-mini p { margin: 2px 0 0; font-size: 0.82rem; }
 
-        /* --- CATEGORIES --- */
-        .cat-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-          gap: 12px;
-          margin-top: 10px;
+        /* --- CATEGORIES: horizontal swipe rail, text-only --- */
+        .cats-section .section-title { margin-bottom: 12px; }
+        .cat-rail {
+          display: flex;
+          gap: 8px;
+          overflow-x: auto;
+          scroll-snap-type: x proximity;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          padding: 4px 0 8px;
+          /* bleed to screen edges so chips can scroll flush */
+          margin-left: calc(-1 * clamp(16px, 3vw, 32px));
+          margin-right: calc(-1 * clamp(16px, 3vw, 32px));
+          padding-left: clamp(16px, 3vw, 32px);
+          padding-right: clamp(16px, 3vw, 32px);
+          mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+          -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
         }
-        .cat-tile {
-          text-align: left;
-          padding: 18px;
+        .cat-rail::-webkit-scrollbar { display: none; }
+        .cat-chip {
+          flex-shrink: 0;
+          scroll-snap-align: start;
+          padding: 9px 18px;
           background: var(--paper);
-          border: 1px solid var(--line);
-          border-radius: var(--radius-md);
-          transition: all .2s;
-          box-shadow: var(--shadow-sm);
+          border: 1px solid var(--line-strong);
+          border-radius: 999px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          color: var(--ink-soft);
+          white-space: nowrap;
+          transition: all .18s;
         }
-        .cat-tile:hover { transform: translateY(-3px); border-color: var(--brand-orange); box-shadow: var(--shadow-md); }
-        .cat-tile.active {
+        .cat-chip:hover { border-color: var(--ink); color: var(--ink); }
+        .cat-chip.active {
           background: var(--brand-orange);
           color: #fff;
           border-color: var(--brand-orange-deep);
-          box-shadow: 0 16px 36px -14px rgba(242,106,31,0.5);
+          box-shadow: 0 8px 20px -10px rgba(242,106,31,0.6);
         }
-        .cat-tile.active .cat-sub { color: rgba(255,255,255,0.85); }
-        .cat-emoji { font-size: 2rem; display: block; margin-bottom: 8px; }
-        .cat-name { font-weight: 700; font-size: 1.05rem; }
-        .cat-sub { font-size: 0.78rem; color: var(--ink-mute); margin-top: 4px; }
-
-        /* Mobile: 2-up tight tiles so they fit without feeling cramped */
         @media (max-width: 600px) {
-          .cat-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 10px;
-          }
-          .cat-tile { padding: 14px; border-radius: var(--radius-sm); }
-          .cat-emoji { font-size: 1.6rem; margin-bottom: 6px; }
-          .cat-name { font-size: 0.95rem; }
-          .cat-sub { font-size: 0.72rem; }
+          .cat-chip { padding: 8px 14px; font-size: 0.85rem; }
         }
 
         /* --- HOTELS --- */
@@ -404,62 +375,28 @@ export default function LandingPage() {
           border-radius: var(--radius-md);
         }
 
-        /* --- ABOUT PREVIEW --- */
-        .about-preview { margin-top: 60px; }
-        .about-card {
-          display: grid;
-          grid-template-columns: 1.5fr 1fr;
-          background: var(--ink);
-          color: #d7d2cf;
-          border-radius: var(--radius-xl);
-          padding: 44px;
-          gap: 40px;
-          position: relative;
-          overflow: hidden;
-          box-shadow: var(--shadow-lg);
+        /* --- ABOUT PREVIEW: minimal, borderless --- */
+        .about-mini {
+          margin-top: 54px;
+          max-width: 680px;
         }
-        .about-card::before {
-          content: ''; position: absolute; inset: 0;
-          background:
-            radial-gradient(circle at 100% 0%, rgba(242,106,31,0.18), transparent 40%),
-            radial-gradient(circle at 0% 100%, rgba(242,106,31,0.08), transparent 50%);
-          pointer-events: none;
+        .about-mini h2 {
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          margin-bottom: 14px;
         }
-        .about-left { position: relative; z-index: 1; }
-        .about-left h2 { color: #fff; margin: 14px 0 16px; font-size: clamp(1.6rem, 3vw, 2.4rem); }
-        .about-left p { font-size: 0.98rem; line-height: 1.65; margin: 0 0 14px; color: #cbc6c3; max-width: 560px; }
-        .about-left strong { color: #fff; font-weight: 600; }
-        .about-apology {
-          padding: 16px 20px;
-          background: rgba(242,106,31,0.14);
-          border-left: 3px solid var(--brand-orange);
-          border-radius: 10px;
+        .about-mini p {
+          font-size: 1rem;
+          line-height: 1.65;
+          color: var(--ink-soft);
+          margin: 0 0 20px;
+        }
+        .about-mini p strong { color: var(--ink); font-weight: 600; }
+        .about-mini-cta { }
+        @media (max-width: 600px) {
+          .about-mini { margin-top: 36px; }
+          .about-mini p { font-size: 0.95rem; }
         }
 
-        .about-right {
-          position: relative; z-index: 1;
-          display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-          align-content: start;
-        }
-        .about-stat {
-          background: rgba(255,255,255,0.06);
-          border: 1px solid rgba(255,255,255,0.08);
-          border-radius: var(--radius-md);
-          padding: 20px 18px;
-        }
-        .stat-num {
-          font-family: var(--font-display);
-          font-size: 2.2rem;
-          font-weight: 700;
-          color: var(--brand-orange-glow);
-          line-height: 1;
-        }
-        .stat-label { font-size: 0.78rem; color: #cbc6c3; margin-top: 6px; line-height: 1.3; }
-
-        @media (max-width: 900px) {
-          .about-card { grid-template-columns: 1fr; padding: 28px; gap: 24px; }
-          .about-right { grid-template-columns: 1fr 1fr; }
-        }
         @media (max-width: 600px) {
           .hero { padding: 20px 0 10px; }
           .hero-badges { margin-bottom: 14px; }
@@ -472,14 +409,6 @@ export default function LandingPage() {
           .section-title h2 { font-size: 1.3rem; }
           .section-title h2 small { font-size: 0.78rem; }
           .hotels-grid { gap: 14px; }
-          .about-preview { margin-top: 40px; }
-          .about-card { padding: 24px; border-radius: var(--radius-lg); }
-          .about-left h2 { font-size: 1.5rem; }
-          .about-left p { font-size: 0.92rem; line-height: 1.6; }
-          .about-apology { padding: 14px 16px; font-size: 0.9rem; }
-          .about-right { gap: 10px; }
-          .about-stat { padding: 16px 14px; }
-          .stat-num { font-size: 1.8rem; }
         }
       `}</style>
     </main>
