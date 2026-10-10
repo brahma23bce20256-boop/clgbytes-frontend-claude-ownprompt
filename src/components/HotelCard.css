@@ -1,0 +1,48 @@
+.hotel-card { overflow: hidden; display: flex; flex-direction: column; }
+.hc-cover { position: relative; aspect-ratio: 16 / 9; background: #f0ece7; overflow: hidden; }
+.hc-cover img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.hotel-card:hover .hc-cover img { transform: scale(1.05); }
+.hc-cover-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(20,18,18,0) 55%, rgba(20,18,18,0.55) 100%);
+}
+.hc-ribbon {
+  position: absolute; left: 12px; bottom: 12px;
+  background: rgba(20,18,18,0.85); color: #fff;
+  font-size: 0.72rem; font-weight: 600;
+  padding: 6px 10px; border-radius: 999px;
+  backdrop-filter: blur(6px);
+}
+.hc-dietband {
+  position: absolute; top: 12px; left: 12px;
+  font-size: 0.68rem; font-weight: 700;
+  padding: 5px 10px; border-radius: 999px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.hc-dietband.veg { background: var(--veg-soft); color: #065F46; }
+.hc-dietband.nonveg { background: var(--nonveg-soft); color: #7F1D1D; }
+.hc-dietband.both { background: #FFF; color: var(--ink); border: 1px solid var(--line-strong); }
+
+.hc-body { padding: 16px 18px 18px; }
+.hc-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.hc-name { font-size: 1.1rem; font-weight: 600; }
+.hc-rating {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #16A34A; color: #fff;
+  padding: 3px 9px; border-radius: 999px;
+  font-size: 0.78rem; font-weight: 700;
+}
+.hc-tag { font-size: 0.84rem; color: var(--ink-mute); margin-top: 4px; }
+.hc-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.hc-meta-item { display: inline-flex; align-items: center; gap: 5px; font-size: 0.8rem; color: var(--ink-soft); font-weight: 500; }
+.hc-meta-dot { width: 3px; height: 3px; border-radius: 999px; background: var(--ink-faint); }
+.hc-location { display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: var(--ink-mute); margin-top: 10px; }
+.hc-location strong { color: var(--ink); font-weight: 600; }
+.hc-cats { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.hc-cat {
+  font-size: 0.72rem; padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--ink-soft);
+  font-weight: 500;
+}

@@ -8,6 +8,7 @@ import HotelCard from '../components/HotelCard'
 import { CATEGORIES } from '../data/categories'
 import { HOTELS } from '../data/hotels'
 import { useStore } from '../store/useStore'
+import './LandingPage.css'
 
 export default function LandingPage() {
   const nav = useNavigate()
@@ -32,7 +33,6 @@ export default function LandingPage() {
 
   return (
     <main className="landing">
-      {/* ============ HERO ============ */}
       <section className="hero">
         <div className="container hero-inner">
           <div className="hero-badges rise">
@@ -71,16 +71,13 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {/* decorative fork hint — nod to the logo */}
         <div className="hero-decor" aria-hidden />
       </section>
 
-      {/* ============ OFFER CAROUSEL ============ */}
       <div className="container">
         <BannerCarousel />
       </div>
 
-      {/* ============ CATEGORIES — horizontal swipe rail ============ */}
       <section className="container cats-section">
         <div className="section-title">
           <h2>What are we eating today?</h2>
@@ -108,7 +105,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ============ FILTER + HOTELS ============ */}
       <section className="container" id="hotels-grid">
         <FilterBar />
         <div className="section-title">
@@ -131,7 +127,6 @@ export default function LandingPage() {
         )}
       </section>
 
-      {/* ============ ABOUT PREVIEW — minimal ============ */}
       <section className="container about-mini">
         <h2>About us</h2>
         <p>
@@ -143,273 +138,6 @@ export default function LandingPage() {
           Read our full story <ArrowRight size={16} />
         </Link>
       </section>
-
-      <style>{`
-        .landing { padding-top: 20px; }
-
-        /* --- HERO --- */
-        .hero {
-          position: relative;
-          padding: 32px 0 20px;
-          overflow: hidden;
-        }
-        .hero::before {
-          content: ''; position: absolute; inset: 0;
-          background:
-            radial-gradient(circle at 85% 0%, rgba(242,106,31,0.14), transparent 40%),
-            radial-gradient(circle at 5% 80%, rgba(242,106,31,0.08), transparent 50%);
-          pointer-events: none;
-        }
-        .hero-inner { position: relative; }
-        .hero-badges { display: inline-flex; gap: 8px; margin-bottom: 20px; }
-        .hb {
-          display: inline-flex; align-items: center; gap: 6px;
-          background: #141212; color: #fff;
-          padding: 7px 14px; border-radius: 999px;
-          font-size: 0.78rem; font-weight: 600;
-          letter-spacing: 0.02em;
-        }
-        .hb svg { color: var(--brand-orange-glow); }
-        .hero-title {
-          font-size: clamp(2.2rem, 5.5vw, 4rem);
-          font-family: var(--font-display);
-          line-height: 1.03;
-          letter-spacing: -0.025em;
-          max-width: 920px;
-        }
-        .hero-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--brand-orange-deep); font-weight: 500; }
-        .pill-6pm, .pill-gate {
-          display: inline-block;
-          padding: 0 10px;
-          border-radius: 10px;
-          background: var(--brand-orange);
-          color: #fff;
-          box-shadow: 0 8px 20px -10px rgba(242,106,31,0.7);
-        }
-        .pill-gate { background: var(--ink); }
-
-        .hero-sub {
-          font-size: 1.05rem;
-          max-width: 640px;
-          color: var(--ink-mute);
-          margin: 18px 0 26px;
-          line-height: 1.55;
-        }
-        .hero-address { margin-bottom: 20px; }
-
-        .hero-search {
-          display: flex; align-items: center;
-          width: 100%;
-          text-align: left;
-          background: var(--paper);
-          border: 1px solid var(--line-strong);
-          border-radius: 999px;
-          padding: 6px 6px 6px 20px;
-          box-shadow: var(--shadow-md);
-          max-width: 640px;
-          gap: 10px;
-          cursor: pointer;
-          transition: border-color .2s, transform .2s;
-        }
-        .hero-search:hover { border-color: var(--brand-orange); transform: translateY(-1px); }
-        .hs-icon { color: var(--ink-mute); display: inline-flex; }
-        .hs-placeholder {
-          flex: 1;
-          font-size: 1rem;
-          color: var(--ink-faint);
-          padding: 14px 0;
-          white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
-        .hs-cta {
-          background: transparent;
-          color: var(--ink);
-          font-weight: 700;
-          padding: 12px 18px;
-          font-size: 0.9rem;
-          flex-shrink: 0;
-          letter-spacing: 0.02em;
-          transition: color .2s;
-        }
-        .hero-search:hover .hs-cta { color: var(--brand-orange-deep); }
-
-        .hero-trust {
-          display: flex; gap: 20px; flex-wrap: wrap;
-          margin-top: 20px;
-          color: var(--ink-mute); font-size: 0.85rem;
-        }
-        .hero-trust span { display: inline-flex; align-items: center; gap: 6px; }
-
-        .hero-decor {
-          position: absolute; right: -40px; top: 20px; width: 320px; height: 320px;
-          background: radial-gradient(circle, rgba(242,106,31,0.18), transparent 60%);
-          filter: blur(10px);
-          pointer-events: none;
-        }
-
-        /* --- BANNERS --- */
-        .banners { margin-top: 20px; display: flex; flex-direction: column; gap: 14px; }
-        .banner-primary {
-          position: relative;
-          display: flex; justify-content: space-between; align-items: center;
-          background: linear-gradient(135deg, var(--brand-orange) 0%, #FF8842 100%);
-          color: #fff;
-          border-radius: var(--radius-lg);
-          padding: 28px 32px;
-          overflow: hidden;
-          box-shadow: var(--shadow-lg);
-        }
-        .banner-primary::before {
-          content: ''; position: absolute; inset: 0;
-          background:
-            radial-gradient(circle at 95% 50%, rgba(255,255,255,0.18), transparent 40%),
-            radial-gradient(circle at 10% 110%, rgba(0,0,0,0.14), transparent 50%);
-        }
-        .banner-text { position: relative; z-index: 1; }
-        .banner-chip {
-          display: inline-flex; align-items: center; gap: 6px;
-          background: rgba(0,0,0,0.2);
-          padding: 6px 12px; border-radius: 999px;
-          font-size: 0.75rem; font-weight: 600;
-          letter-spacing: 0.02em;
-          margin-bottom: 10px;
-        }
-        .banner-text h2 { font-size: clamp(1.4rem, 2.6vw, 2rem); color: #fff; max-width: 640px; }
-        .banner-text h2 strong { background: rgba(0,0,0,0.25); padding: 0 10px; border-radius: 8px; }
-        .banner-text p { margin: 8px 0 0; opacity: 0.9; font-size: 0.95rem; max-width: 560px; }
-
-        .banner-clock { position: relative; z-index: 1; flex-shrink: 0; margin-left: 16px; }
-        .clock-ring {
-          width: 128px; height: 128px; border-radius: 999px;
-          background: rgba(255,255,255,0.14);
-          border: 2px dashed rgba(255,255,255,0.4);
-          position: relative;
-        }
-        .clock-mark {
-          position: absolute;
-          font-family: var(--font-display);
-          font-size: 1.6rem;
-          font-weight: 700;
-          color: #fff;
-          padding: 4px 10px;
-          background: var(--ink);
-          border-radius: 10px;
-          box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-        }
-        .m-6pm { top: 6px; left: 50%; transform: translateX(-50%); }
-        .m-8pm { bottom: 6px; left: 50%; transform: translateX(-50%); }
-        .clock-core {
-          position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-          font-size: 0.9rem; opacity: 0.9; letter-spacing: 0.1em; text-transform: uppercase;
-        }
-
-        .banner-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-        .banner-mini {
-          display: flex; align-items: center; gap: 14px;
-          background: var(--paper);
-          border: 1px solid var(--line);
-          border-radius: var(--radius-md);
-          padding: 16px 18px;
-          box-shadow: var(--shadow-sm);
-          transition: transform .18s, box-shadow .18s;
-        }
-        .banner-mini:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .bm-emoji { font-size: 2rem; }
-        .banner-mini h3 { font-family: var(--font-sans); font-weight: 700; font-size: 1rem; }
-        .banner-mini p { margin: 2px 0 0; font-size: 0.82rem; }
-
-        /* --- CATEGORIES: horizontal swipe rail, text-only --- */
-        .cats-section .section-title { margin-bottom: 12px; }
-        .cat-rail {
-          display: flex;
-          gap: 8px;
-          overflow-x: auto;
-          scroll-snap-type: x proximity;
-          -webkit-overflow-scrolling: touch;
-          scrollbar-width: none;
-          padding: 4px 0 8px;
-          /* bleed to screen edges so chips can scroll flush */
-          margin-left: calc(-1 * clamp(16px, 3vw, 32px));
-          margin-right: calc(-1 * clamp(16px, 3vw, 32px));
-          padding-left: clamp(16px, 3vw, 32px);
-          padding-right: clamp(16px, 3vw, 32px);
-          mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
-          -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
-        }
-        .cat-rail::-webkit-scrollbar { display: none; }
-        .cat-chip {
-          flex-shrink: 0;
-          scroll-snap-align: start;
-          padding: 9px 18px;
-          background: var(--paper);
-          border: 1px solid var(--line-strong);
-          border-radius: 999px;
-          font-weight: 600;
-          font-size: 0.9rem;
-          color: var(--ink-soft);
-          white-space: nowrap;
-          transition: all .18s;
-        }
-        .cat-chip:hover { border-color: var(--ink); color: var(--ink); }
-        .cat-chip.active {
-          background: var(--brand-orange);
-          color: #fff;
-          border-color: var(--brand-orange-deep);
-          box-shadow: 0 8px 20px -10px rgba(242,106,31,0.6);
-        }
-        @media (max-width: 600px) {
-          .cat-chip { padding: 8px 14px; font-size: 0.85rem; }
-        }
-
-        /* --- HOTELS --- */
-        .hotels-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-          gap: 20px;
-        }
-        .empty-card {
-          text-align: center;
-          padding: 50px 20px;
-          background: var(--paper);
-          border: 1px dashed var(--line-strong);
-          border-radius: var(--radius-md);
-        }
-
-        /* --- ABOUT PREVIEW: minimal, borderless --- */
-        .about-mini {
-          margin-top: 54px;
-          max-width: 680px;
-        }
-        .about-mini h2 {
-          font-size: clamp(1.5rem, 3vw, 2rem);
-          margin-bottom: 14px;
-        }
-        .about-mini p {
-          font-size: 1rem;
-          line-height: 1.65;
-          color: var(--ink-soft);
-          margin: 0 0 20px;
-        }
-        .about-mini p strong { color: var(--ink); font-weight: 600; }
-        .about-mini-cta { }
-        @media (max-width: 600px) {
-          .about-mini { margin-top: 36px; }
-          .about-mini p { font-size: 0.95rem; }
-        }
-
-        @media (max-width: 600px) {
-          .hero { padding: 20px 0 10px; }
-          .hero-badges { margin-bottom: 14px; }
-          .hero-title { font-size: clamp(1.9rem, 8vw, 2.6rem); }
-          .hero-sub { font-size: 0.95rem; margin: 14px 0 20px; }
-          .hero-search { padding: 5px 5px 5px 16px; }
-          .hero-search input { font-size: 0.95rem; padding: 12px 0; }
-          .hs-cta { padding: 10px 16px; font-size: 0.85rem; }
-          .hero-trust { gap: 14px; font-size: 0.78rem; margin-top: 16px; }
-          .section-title h2 { font-size: 1.3rem; }
-          .section-title h2 small { font-size: 0.78rem; }
-          .hotels-grid { gap: 14px; }
-        }
-      `}</style>
     </main>
   )
 }

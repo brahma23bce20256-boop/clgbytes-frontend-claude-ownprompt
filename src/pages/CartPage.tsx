@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Minus, Plus, Trash2, Clock, MapPin, ShieldCheck, ArrowRight } from 'lucide-react'
 import { useStore } from '../store/useStore'
 import { UNIVERSITIES } from '../data/universities'
+import './CartPage.css'
 
 export default function CartPage() {
   const nav = useNavigate()
@@ -137,116 +138,6 @@ export default function CartPage() {
           </p>
         </aside>
       </div>
-
-      <style>{`
-        .cart-page { padding-bottom: 120px; }
-        .cart-grid { display: grid; grid-template-columns: 1fr 380px; gap: 24px; align-items: start; }
-        .cart-card { padding: 22px 26px; }
-        .cart-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
-        .cart-head-title { font-weight: 600; }
-        .btn-link { color: var(--brand-orange-deep); font-size: 0.82rem; font-weight: 600; }
-        .btn-link:hover { text-decoration: underline; }
-
-        .cart-line {
-          display: grid;
-          grid-template-columns: 20px 1fr auto auto auto;
-          gap: 14px; align-items: center;
-          padding: 16px 0;
-          border-bottom: 1px dashed var(--line);
-        }
-        .cl-info { min-width: 0; }
-        .cl-name { font-weight: 600; font-size: 0.95rem; }
-        .cl-price { font-size: 0.8rem; margin-top: 3px; }
-
-        /* Quantity stepper — transparent, dark icons */
-        .cl-qty {
-          display: inline-flex; align-items: center;
-          background: transparent;
-          color: var(--ink);
-          border: 1px solid var(--line-strong);
-          border-radius: 10px;
-          overflow: hidden;
-          user-select: none;
-        }
-        .cl-qty button {
-          display: inline-flex; align-items: center; justify-content: center;
-          width: 34px; height: 34px;
-          padding: 0;
-          color: var(--ink);
-          background: transparent;
-          transition: background .15s;
-        }
-        .cl-qty button:hover,
-        .cl-qty button:active { background: var(--cream); }
-        .cl-qty button:focus-visible { outline: 2px solid var(--brand-orange); outline-offset: -3px; }
-        .cl-qty span {
-          padding: 0 6px;
-          font-weight: 700;
-          min-width: 24px;
-          text-align: center;
-          font-size: 0.95rem;
-          line-height: 1;
-          color: var(--ink);
-        }
-
-        .cl-total { font-weight: 700; font-size: 0.95rem; min-width: 60px; text-align: right; }
-        .cl-remove {
-          display: inline-flex; align-items: center; justify-content: center;
-          width: 32px; height: 32px;
-          color: var(--ink-mute);
-          border-radius: 8px;
-          transition: color .18s, background .18s;
-        }
-        .cl-remove:hover { color: var(--nonveg); background: var(--nonveg-soft); }
-
-        .cl-add { display: inline-block; margin-top: 14px; }
-
-        .cart-info { padding: 20px 24px; margin-top: 16px; display: flex; flex-direction: column; gap: 16px; }
-        .ci-item { display: flex; gap: 10px; align-items: flex-start; }
-        .ci-item > svg { color: var(--brand-orange); flex-shrink: 0; margin-top: 2px; }
-        .ci-top { font-size: 0.72rem; color: var(--ink-mute); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
-        .ci-sub { font-size: 0.9rem; margin-top: 3px; line-height: 1.5; }
-        .ci-sub strong { color: var(--ink); }
-
-        .cart-summary { padding: 24px 26px; position: sticky; top: 100px; }
-        .cart-summary h3 { font-size: 1.1rem; margin-bottom: 16px; }
-        .bill-row { display: flex; justify-content: space-between; padding: 8px 0; font-size: 0.92rem; }
-        .bill-row.discount { color: var(--veg); font-weight: 600; }
-        .bill-row.total { font-size: 1.1rem; font-weight: 700; padding-top: 14px; }
-        .bill-sep { height: 1px; background: var(--line); margin: 8px 0; }
-        .bill-nudge {
-          background: var(--brand-orange-soft);
-          color: var(--brand-orange-deep);
-          padding: 10px 14px;
-          border-radius: 10px;
-          font-size: 0.82rem;
-          font-weight: 600;
-          margin: 10px 0 0;
-        }
-        .pay-cta { width: 100%; justify-content: center; margin-top: 18px; padding: 14px; font-size: 1rem; }
-
-        @media (max-width: 900px) {
-          .cart-grid { grid-template-columns: 1fr; }
-          .cart-summary { position: static; }
-
-          /* Row 1: [v]  Name                       [x]
-             Row 2:      [-] 2 [+]           ₹100       */
-          .cart-line {
-            grid-template-columns: 20px 1fr auto;
-            row-gap: 10px;
-          }
-          .vn-mark { grid-column: 1; grid-row: 1; }
-          .cl-info { grid-column: 2; grid-row: 1; }
-          .cl-remove { grid-column: 3; grid-row: 1; }
-          .cl-qty { grid-column: 2; grid-row: 2; justify-self: start; }
-          .cl-total {
-            grid-column: 3; grid-row: 2;
-            justify-self: end;
-            padding-left: 0;
-            text-align: right;
-          }
-        }
-      `}</style>
     </main>
   )
 }

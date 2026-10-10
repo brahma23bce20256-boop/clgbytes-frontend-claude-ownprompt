@@ -4,6 +4,7 @@ import { User as UserIcon, Mail, Phone, LogOut, MapPin, HelpCircle, Receipt, X, 
 import { AnimatePresence, motion } from 'framer-motion'
 import { useStore } from '../store/useStore'
 import { UNIVERSITIES, CONTACT } from '../data/universities'
+import './ProfilePage.css'
 
 export default function ProfilePage() {
   const user = useStore((s) => s.user)
@@ -183,134 +184,6 @@ export default function ProfilePage() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <style>{`
-        .profile-page { padding-bottom: 100px; }
-        .profile-hero {
-          display: flex; justify-content: space-between; align-items: center;
-          padding: 30px 32px; gap: 20px; flex-wrap: wrap;
-        }
-        .ph-left { display: flex; align-items: center; gap: 20px; }
-        .ph-avatar {
-          width: 72px; height: 72px; border-radius: 20px;
-          background: var(--brand-orange); color: #fff;
-          font-family: var(--font-display);
-          font-weight: 700; font-size: 2.2rem;
-          display: inline-flex; align-items: center; justify-content: center;
-          box-shadow: 0 10px 28px -12px rgba(242,106,31,0.6);
-        }
-        .profile-hero h1 { margin: 8px 0 6px; font-size: 1.6rem; }
-        .ph-sub { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.85rem; color: var(--ink-mute); }
-        .ph-sub span { display: inline-flex; align-items: center; gap: 5px; }
-
-        .profile-stats {
-          display: grid; grid-template-columns: repeat(4, 1fr);
-          gap: 14px; margin-top: 20px;
-        }
-        .stat-card {
-          background: var(--paper);
-          border: 1px solid var(--line);
-          border-radius: var(--radius-md);
-          padding: 20px;
-          box-shadow: var(--shadow-sm);
-          text-align: left;
-          transition: transform .18s, box-shadow .18s, border-color .18s;
-        }
-        .stat-card.clickable:hover { transform: translateY(-3px); border-color: var(--brand-orange); box-shadow: var(--shadow-md); }
-        .sc-top { font-size: 0.78rem; color: var(--ink-mute); display: inline-flex; align-items: center; gap: 6px; font-weight: 600; }
-        .sc-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--ink); margin-top: 8px; line-height: 1; }
-        .sc-note { font-size: 0.72rem; margin-top: 8px; }
-
-        .profile-row {
-          display: grid; grid-template-columns: repeat(4, 1fr);
-          gap: 14px; margin-top: 20px;
-        }
-        .pr-tile {
-          display: flex; gap: 14px; align-items: center;
-          background: var(--paper);
-          border: 1px solid var(--line);
-          border-radius: var(--radius-md);
-          padding: 18px 20px;
-          box-shadow: var(--shadow-sm);
-          text-align: left;
-          transition: all .18s;
-        }
-        .pr-tile:hover { transform: translateY(-2px); border-color: var(--brand-orange); box-shadow: var(--shadow-md); }
-        .pr-icon {
-          width: 36px; height: 36px; border-radius: 10px;
-          background: var(--brand-orange-soft); color: var(--brand-orange-deep);
-          display: inline-flex; align-items: center; justify-content: center;
-          flex-shrink: 0;
-        }
-        .pr-top { font-weight: 700; font-size: 0.95rem; }
-        .pr-sub { font-size: 0.78rem; margin-top: 2px; }
-
-        .modal-overlay {
-          position: fixed; inset: 0;
-          background: rgba(20,18,18,0.5);
-          backdrop-filter: blur(6px);
-          z-index: 100;
-          display: flex; align-items: center; justify-content: center;
-          padding: 20px;
-        }
-        .modal-card {
-          position: relative;
-          background: var(--paper);
-          border-radius: var(--radius-md);
-          padding: 32px;
-          max-width: 480px; width: 100%;
-          max-height: 80vh; overflow-y: auto;
-        }
-        .modal-close {
-          position: absolute; top: 14px; right: 14px;
-          width: 32px; height: 32px; border-radius: 999px;
-          background: var(--cream); color: var(--ink);
-          display: inline-flex; align-items: center; justify-content: center;
-          transition: background .18s;
-        }
-        .modal-close:hover { background: var(--line-strong); }
-        .modal-card h2 { font-size: 1.4rem; margin-bottom: 6px; }
-
-        .items-list { list-style: none; padding: 0; margin: 20px 0 0; display: flex; flex-direction: column; gap: 8px; }
-        .items-list li {
-          display: flex; justify-content: space-between;
-          padding: 10px 14px;
-          background: var(--cream);
-          border-radius: 10px;
-          font-size: 0.92rem;
-          font-weight: 500;
-        }
-        .il-qty { font-weight: 700; color: var(--brand-orange-deep); }
-
-        .addr-detail {
-          margin-top: 20px;
-          padding: 18px;
-          background: var(--brand-orange-soft);
-          border-radius: var(--radius-sm);
-        }
-        .ad-name { font-weight: 700; font-size: 1.05rem; }
-        .ad-city { font-size: 0.85rem; color: var(--ink-mute); margin-top: 2px; }
-        .ad-note { font-size: 0.85rem; margin-top: 12px; line-height: 1.5; }
-
-        .help-list { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
-        .help-item {
-          display: flex; align-items: center; gap: 10px;
-          padding: 14px 16px;
-          background: var(--cream);
-          border-radius: 10px;
-          font-size: 0.95rem;
-          color: var(--ink);
-          transition: background .18s;
-        }
-        .help-item:hover { background: var(--brand-orange-soft); color: var(--brand-orange-deep); }
-        .help-item > svg { color: var(--brand-orange); }
-        .help-note { font-size: 0.82rem; color: var(--ink-mute); line-height: 1.5; margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line); }
-
-        @media (max-width: 760px) {
-          .profile-stats { grid-template-columns: 1fr 1fr; }
-          .profile-row { grid-template-columns: 1fr 1fr; }
-        }
-      `}</style>
     </main>
   )
 }

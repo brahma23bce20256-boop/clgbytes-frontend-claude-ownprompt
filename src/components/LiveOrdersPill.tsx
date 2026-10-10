@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Bike } from 'lucide-react'
 import { useStore } from '../store/useStore'
+import './LiveOrdersPill.css'
 
 /**
  * Fixed, flush-left floating pill. Appears when the user has one or more
@@ -36,49 +37,6 @@ export default function LiveOrdersPill() {
               <span className="lo-dot" />
             </span>
           </Link>
-
-          <style>{`
-            .lo-pill-wrap {
-              position: fixed;
-              left: 0;
-              /* cart popup lives at bottom: 20px with ~60px height — gives ~20px of air */
-              bottom: 108px;
-              z-index: 65;
-              pointer-events: none;
-            }
-            .lo-pill { pointer-events: auto; }
-            .lo-inner {
-              display: inline-flex; align-items: center; justify-content: center;
-              background: var(--paper);
-              padding: 10px 14px 10px 12px;
-              /* flush-left: no left radius so it looks attached to the border */
-              border-radius: 0 999px 999px 0;
-              border: 1px solid var(--line-strong);
-              border-left: 0;
-              box-shadow:
-                0 18px 40px -12px rgba(20,18,18,0.25),
-                0 6px 16px -4px rgba(242,106,31,0.22);
-              transition: transform .18s;
-            }
-            .lo-inner:hover { transform: translateX(2px); }
-            .lo-icon {
-              position: relative;
-              display: inline-flex; align-items: center; justify-content: center;
-              color: var(--ink);
-              flex-shrink: 0;
-            }
-            .lo-dot {
-              position: absolute; top: -4px; right: -5px;
-              width: 9px; height: 9px; border-radius: 999px;
-              background: #22C55E;
-              border: 2px solid var(--paper);
-              animation: lo-pulse 1.4s ease-in-out infinite;
-            }
-            @keyframes lo-pulse {
-              0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.6); }
-              50%      { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
-            }
-          `}</style>
           </motion.div>
         </div>
       )}
