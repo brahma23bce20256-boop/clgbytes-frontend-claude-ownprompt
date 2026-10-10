@@ -1,4 +1,4 @@
-.cart-page { padding-bottom: 120px; }
+.cart-page { padding-top: 5px; padding-bottom: 120px; }
 .cart-grid { display: grid; grid-template-columns: 1fr 380px; gap: 24px; align-items: start; }
 .cart-card { padding: 22px 26px; }
 .cart-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }

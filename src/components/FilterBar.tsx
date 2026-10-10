@@ -1,7 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { SlidersHorizontal, Check } from 'lucide-react'
-import VegToggle from './VegToggle'
 import { useStore, SortBy } from '../store/useStore'
 import './FilterBar.css'
 
@@ -21,8 +20,6 @@ export default function FilterBar() {
 
   const sortBy = useStore((s) => s.sortBy)
   const setSortBy = useStore((s) => s.setSortBy)
-  const vegFilter = useStore((s) => s.vegFilter)
-  const setVegFilter = useStore((s) => s.setVegFilter)
 
   // Close on outside click
   useEffect(() => {
@@ -63,7 +60,7 @@ export default function FilterBar() {
     }
   }, [open])
 
-  const activeLabel = SORTS.find((s) => s.k === sortBy)?.label ?? 'Relevance'
+  const isFiltered = sortBy !== 'relevance'
 
   const dropdown = open && pos ? (
     <div
@@ -89,40 +86,20 @@ export default function FilterBar() {
   ) : null
 
   return (
-    <div className="filter-bar">
-      <div className="filter-left">
-        <button
-          ref={triggerRef}
-          className={`filter-btn ${open ? 'open' : ''}`}
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-        >
+    <>
+      <button
+        ref={triggerRef}
+        className={`filter-btn ${open ? 'open' : ''} ${isFiltered ? 'is-filtered' : ''}`}
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+      >
+        <span className="filter-icon-wrap">
           <SlidersHorizontal size={16} />
-          <span>Filter · <strong>{activeLabel}</strong></span>
-        </button>
-      </div>
-
-      <div className="filter-right">
-        <button
-          className={`diet-btn ${vegFilter === 'veg' ? 'on-veg' : ''}`}
-          onClick={() => setVegFilter(vegFilter === 'veg' ? 'all' : 'veg')}
-          aria-pressed={vegFilter === 'veg'}
-        >
-          <span className="vn-mark" />
-          Veg
-        </button>
-        <button
-          className={`diet-btn ${vegFilter === 'nonveg' ? 'on-nonveg' : ''}`}
-          onClick={() => setVegFilter(vegFilter === 'nonveg' ? 'all' : 'nonveg')}
-          aria-pressed={vegFilter === 'nonveg'}
-        >
-          <span className="vn-mark nonveg" />
-          Non-veg
-        </button>
-        <div className="filter-toggle-wrap"><VegToggle /></div>
-      </div>
-
+          {isFiltered && <span className="filter-dot" aria-hidden />}
+        </span>
+        <span>Filter</span>
+      </button>
       {typeof document !== 'undefined' && dropdown && createPortal(dropdown, document.body)}
-    </div>
+    </>
   )
 }

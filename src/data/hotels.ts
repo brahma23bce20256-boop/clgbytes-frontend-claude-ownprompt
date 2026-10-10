@@ -27,7 +27,7 @@ export interface Hotel {
 }
 
 const img = (seed: string) =>
-  `https://images.unsplash.com/photo-${seed}?auto=format&fit=crop&w=1200&q=80`
+  `https://images.unsplash.com/photo-${seed}?auto=format&fit=crop&w=640&q=70`
 
 export const HOTELS: Hotel[] = [
   {

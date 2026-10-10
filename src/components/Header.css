@@ -1,9 +1,6 @@
 .site-header {
-  position: sticky; top: 0; z-index: 50;
-  background: color-mix(in oklab, var(--cream) 85%, white 15%);
-  backdrop-filter: saturate(140%) blur(12px);
-  -webkit-backdrop-filter: saturate(140%) blur(12px);
-  border-bottom: 1px solid var(--line);
+  position: static;
+  background: transparent;
 }
 .header-inner {
   height: var(--header-h);

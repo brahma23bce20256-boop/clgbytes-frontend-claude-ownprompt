@@ -1,6 +1,6 @@
 .bc-wrap {
   position: relative;
-  margin: 18px 0 6px;
+  margin: 8px 0 6px;
 }
 .bc-scroller {
   display: flex;
@@ -24,11 +24,11 @@
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  padding: 16px 18px;
+  padding: 22px 22px;
   border-radius: var(--radius-md);
   overflow: hidden;
   color: #fff;
-  min-height: 118px;
+  min-height: 150px;
   box-shadow: var(--shadow-sm);
 }
 .bc-body { position: relative; z-index: 1; flex: 1; min-width: 0; }
@@ -141,11 +141,11 @@
 
 @media (min-width: 820px) {
   .bc-arrow { display: inline-flex; }
-  .bc-slide { padding: 22px 28px; min-height: 150px; border-radius: var(--radius-lg); }
-  .bc-title { font-size: clamp(1.3rem, 2vw, 1.75rem); margin-bottom: 8px; }
-  .bc-sub { font-size: 0.88rem; }
+  .bc-slide { padding: 30px 36px; min-height: 190px; border-radius: var(--radius-lg); }
+  .bc-title { font-size: clamp(1.4rem, 2.2vw, 1.95rem); margin-bottom: 8px; }
+  .bc-sub { font-size: 0.95rem; }
   .bc-chip { font-size: 0.72rem; padding: 5px 11px; margin-bottom: 10px; }
-  .bc-art-emoji { font-size: 3rem; }
-  .bc-clock { width: 100px; height: 100px; }
+  .bc-art-emoji { font-size: 3.4rem; }
+  .bc-clock { width: 112px; height: 112px; }
   .bc-clock-mark { font-size: 1.1rem; padding: 3px 9px; }
 }

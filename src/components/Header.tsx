@@ -1,12 +1,11 @@
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { ShoppingBag, User as UserIcon, Package2 } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { User as UserIcon } from 'lucide-react'
 import Logo from './Logo'
 import AddressSelector from './AddressSelector'
 import { useStore } from '../store/useStore'
 import './Header.css'
 
 export default function Header() {
-  const cartCount = useStore((s) => s.cart.reduce((a, l) => a + l.qty, 0))
   const user = useStore((s) => s.user)
   const loc = useLocation()
 
@@ -26,15 +25,6 @@ export default function Header() {
         )}
 
         <nav className="header-right">
-          <NavLink to="/orders" className="hd-link" aria-label="Orders">
-            <Package2 size={18} />
-            <span>Orders</span>
-          </NavLink>
-          <Link to="/cart" className="hd-cart" aria-label="Cart">
-            <ShoppingBag size={18} />
-            <span>Cart</span>
-            {cartCount > 0 && <span className="hd-badge">{cartCount}</span>}
-          </Link>
           <Link to={user ? '/profile' : '/login'} className="hd-profile" aria-label="Profile">
             {user ? (
               <span className="hd-avatar">{user.name.slice(0, 1).toUpperCase()}</span>

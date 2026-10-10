@@ -91,9 +91,6 @@ export default function SearchPage() {
                 </button>
               ))}
             </div>
-            <div className="se-hint">
-              Looking for a hotel by name works too — try “Bawarchi” or “Shawarma Street”.
-            </div>
           </div>
         )}
 
@@ -163,7 +160,7 @@ export default function SearchPage() {
             <div className="hotel-list">
               {hotelsMatch.map((h) => (
                 <Link key={h.id} to={`/menu/${h.id}`} className="hotel-row">
-                  <img src={h.cover} alt="" className="hr-thumb" loading="lazy" />
+                  <img src={h.cover} alt="" className="hr-thumb" loading="lazy" decoding="async" width={120} height={120} />
                   <div className="hr-body">
                     <div className="hr-top">
                       <div className="hr-name">{h.name}</div>

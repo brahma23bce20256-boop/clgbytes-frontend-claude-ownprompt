@@ -13,24 +13,9 @@ interface Props {
  * background sinks seamlessly into the chrome. The tile color is the exact
  * brand orange, matching the logo image background pixel-for-pixel.
  */
-export default function Logo({ size = 44, withWordmark = true, variant = 'tile' }: Props) {
-  // Match the uploaded clgbytes-logo.png aspect ratio (≈1.81:1) so the dark C
-  // on the left and the white B on the right both render fully without clipping.
-  const LOGO_RATIO = 1.81
-  const h = size
-  const w = Math.round(size * LOGO_RATIO)
+export default function Logo({ withWordmark = true }: Props) {
   return (
-    <Link to="/" className={`logo-link logo-${variant}`} aria-label="Clgbytes home">
-      <span
-        className="logo-mark"
-        style={{
-          width: w,
-          height: h,
-          borderRadius: variant === 'tile' ? Math.round(size * 0.22) : 0,
-        }}
-      >
-        <img src="/clgbytes-logo.png" alt="Clgbytes" width={w} height={h} />
-      </span>
+    <Link to="/" className="logo-link" aria-label="Clgbytes home">
       {withWordmark && (
         <span className="logo-word">
           <span className="logo-word-main">clgbytes</span>

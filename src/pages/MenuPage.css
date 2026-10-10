@@ -16,7 +16,7 @@
   box-shadow: var(--shadow-md);
 }
 
-.menu-head-wrap { margin-top: -70px; position: relative; z-index: 2; }
+.menu-head-wrap { margin-top: -70px; position: relative; z-index: 2; transform: translateY(-40px); }
 .menu-head { padding: 24px 28px; }
 .menu-head-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .menu-cuisines { font-size: 0.82rem; color: var(--ink-mute); margin-bottom: 6px; font-weight: 500; }
@@ -53,11 +53,11 @@
 }
 .menu-search {
   flex: 1; min-width: 220px;
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
   background: var(--paper); border: 1px solid var(--line-strong);
-  border-radius: 999px; padding: 10px 18px;
+  border-radius: 999px; padding: 14px 22px;
 }
-.menu-search input { border: 0; outline: 0; background: transparent; flex: 1; font-size: 0.95rem; }
+.menu-search input { border: 0; outline: 0; background: transparent; flex: 1; font-size: 1.05rem; }
 
 .menu-section { margin-bottom: 36px; }
 .menu-section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }

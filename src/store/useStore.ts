@@ -63,6 +63,10 @@ interface Store {
   decrement: (itemId: string) => void
   clearCart: () => void
 
+  pendingSwitch: { item: MenuItem; hotelId: string; hotelName: string; existingHotelName: string } | null
+  confirmSwitch: () => void
+  cancelSwitch: () => void
+
   orders: Order[]
   placeOrder: () => Order | null
   advanceOrder: (orderId: string, status: OrderStatus) => void
@@ -92,9 +96,8 @@ export const useStore = create<Store>()(
       cart: [],
       addToCart: (item, hotelId, hotelName) => {
         const cart = get().cart
-        // if cart has lines from another hotel, replace
         if (cart.length && cart[0].hotelId !== hotelId) {
-          set({ cart: [{ item, hotelId, hotelName, qty: 1 }] })
+          set({ pendingSwitch: { item, hotelId, hotelName, existingHotelName: cart[0].hotelName } })
           return
         }
         const existing = cart.find((l) => l.item.id === item.id)
@@ -104,6 +107,15 @@ export const useStore = create<Store>()(
           set({ cart: [...cart, { item, hotelId, hotelName, qty: 1 }] })
         }
       },
+
+      pendingSwitch: null,
+      confirmSwitch: () => {
+        const p = get().pendingSwitch
+        if (!p) return
+        set({ cart: [{ item: p.item, hotelId: p.hotelId, hotelName: p.hotelName, qty: 1 }], pendingSwitch: null })
+      },
+      cancelSwitch: () => set({ pendingSwitch: null }),
+
       decrement: (itemId) => {
         const cart = get().cart
         const line = cart.find((l) => l.item.id === itemId)
