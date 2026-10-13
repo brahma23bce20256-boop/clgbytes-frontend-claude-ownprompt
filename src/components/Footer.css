@@ -30,7 +30,7 @@
   font-size: 0.78rem; color: #9a9290;
 }
 .ft-small { color: var(--brand-orange-glow); }
-.site-footer .logo-word-main { color: #fff; }
+.site-footer .logo-word-main { color: var(--brand-orange); }
 .site-footer .logo-word-sub { color: #9a9290; }
 @media (max-width: 760px) {
   .ft-grid { grid-template-columns: 1fr 1fr; }

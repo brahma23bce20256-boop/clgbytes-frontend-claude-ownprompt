@@ -18,7 +18,7 @@ export default function Logo({ withWordmark = true }: Props) {
     <Link to="/" className="logo-link" aria-label="Clgbytes home">
       {withWordmark && (
         <span className="logo-word">
-          <span className="logo-word-main">clgbytes</span>
+          <span className="logo-word-main">Clg<span className="logo-word-bytes">Bytes</span></span>
           <span className="logo-word-sub">campus food · trusted daily</span>
         </span>
       )}
